@@ -32,3 +32,9 @@ Edges:
 ```
 This automaton has 5 vertices, where vertices `0` and `1` have label `0` and vertices `2`, `3`, and `4` have label `1`.
 The `0`-edge out of `0` goes to `0`, and the `1`-edge out of `0` goes to `4`.
+
+## Some open questions
+
+* To which degree `d` do we need to check that `\sigma^k \equiv x \mod x^d` to be sure equality holds as well.
+* Can we find an automaton for `\sigma^2`?
+* More general, is there an automaton to automaton mapping that gives the automaton corresponding to `\sigma^2`?

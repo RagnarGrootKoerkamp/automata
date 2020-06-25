@@ -18,7 +18,7 @@ The search over automata works as follows:
 
 ## Output format
 
-The file [results_6.txt](results_6.txt) contains results for up to `6` vertices. It prints all automata with degree at most `8` and their corresponding power series. Each automaton first lists the labels of the vertices, followed by a description of the edges. The `i`th line contains the destination of the `0`-edge followed by the destination of the `1`-edges.
+Each automaton in the output first lists the labels of the vertices, followed by a description of the edges. The `i`th line contains the destination of the `0`-edge followed by the destination of the `1`-edges.
 
 For example:
 ```
@@ -32,6 +32,23 @@ Edges:
 ```
 This automaton has 5 vertices, where vertices `0` and `1` have label `0` and vertices `2`, `3`, and `4` have label `1`.
 The `0`-edge out of `0` goes to `0`, and the `1`-edge out of `0` goes to `4`.
+
+## Output data
+
+* [results\_6.txt](results_6.txt): degree up to 6, order up to 8, modulo `x^{2^{10}+1}=x^{1025}`, and only of the form `x+x^2 + O(x^3)`.
+* [results\_6\_order\_8\_degree\_65536.txt](results_6_order_8_degree_65536.txt): degree up to 6, order up to 8, modulo `x^{2^{16}+1}=x^{65537}`, and `\sigma` of the form `x+x^2+O(x^3)` or `x+x^4+O(x^5)`. (Power series are only printed to order `x^{1024}`.)
+
+  It finds the following results. Note that the order 8 power series may be false positives because we only check this modulo `x^{65537}`.
+    * Number of automata on 2 vertices of order 2: 1
+    * Number of automata on 4 vertices of order 2: 1
+    * Number of automata on 4 vertices of order 8: 1
+    * Number of automata on 5 vertices of order 2: 2
+    * Number of automata on 5 vertices of order 4: 1
+    * Number of automata on 5 vertices of order 8: 3
+    * Number of automata on 6 vertices of order 2: 7
+    * Number of automata on 6 vertices of order 4: 1
+    * Number of automata on 6 vertices of order 8: 3
+
 
 ## Some open questions
 

@@ -2,7 +2,7 @@ This program find 2-automata on at most 6 vertices satisfying the following cond
 
 - Leading zeros invariant, e.g. outgoing `0` edges point to vertices of the same label.
 - Minimal: there exists no smaller automaton with the same power series.
-- The power series has `a_0 = 0`, `a_1 = 1` and `a_2 = 2`, i.e. it starts with `\sigma = x + x^2 + O(x^3)`.
+- The power series has `a_0 = 0`, `a_1 = 1` and `a_2 = 1`, i.e. it starts with `\sigma = x + x^2 + O(x^3)`.
 - The power series has order `1`, `2`, `4`, or `8` modulo `x^{1025}`.
 
 ## Implementation notes

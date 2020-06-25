@@ -1,3 +1,7 @@
+#include "lib/fft.cpp"
+#include "lib/field.cpp"
+#include "lib/poly.cpp"
+
 #include <array>
 #include <bit>
 #include <cassert>
@@ -7,163 +11,83 @@
 #include <set>
 #include <vector>
 
-// An small Field class.
-template <auto P, typename B> // prime, underlying integer type.
-struct Field {
-	constexpr static B p = P;
-	using T              = Field;
-
-  private:
-	B x;
-
-  public:
-	constexpr Field(B x = 0) : x{x % p} {} // NOLINT
-
-	constexpr T operator+(T r) const { return (x + r.x) % p; }
-	constexpr T& operator+=(T r) { return x = (x + r.x) % p, *this; }
-	constexpr T operator*(T r) const { return (x % p * r.x) % p; }
-	constexpr T& operator*=(T r) { return x = (x % p * r.x) % p, *this; }
-	constexpr bool operator==(T r) const { return (x - r.x) % p == 0; }
-	constexpr bool operator!=(T r) const { return !(*this == r); }
-
-	[[nodiscard]] B val() const { return ((x % p) + p) % p; }
-
-	friend std::ostream& operator<<(std::ostream& o, T t) { return o << t.val(); }
-
-	// Comparison operator so we can use this in std::set.
-	bool operator<(const T& r) const { return val() < r.val(); };
-};
-
-// Polynomials.
-template <typename T>
-struct Poly : public std::vector<T> {
-	using std::vector<T>::vector, std::vector<T>::size, std::vector<T>::operator[];
-	explicit Poly(std::vector<T>&& v) : std::vector<T>(std::move(v)) {}
-	explicit Poly(const std::vector<T>& v) : std::vector<T>(v) {}
-	explicit Poly(const T& t) : std::vector<T>{t} {}
-
-	static const Poly x;
-
-	Poly<T>& resize(int n) {
-		std::vector<T>::resize(n);
-		return *this;
-	}
-
-	// Remove trailing zeros.
-	Poly<T>& simplify() {
-		while(!this->empty() && this->back() == 0) this->pop_back();
-		return *this;
-	}
-
-	// Addition.
-	Poly<T> operator+=(const Poly<T>& r) {
-		auto& l = *this;
-		if(r.size() > size()) l.resize(r.size());
-		for(int i = 0; i < r.size(); ++i) l[i] += r[i];
-		return l;
-	}
-	friend Poly<T> operator+(Poly<T> l, const Poly<T>& r) {
-		if(r.size() > l.size()) l.resize(r.size());
-		for(int i = 0; i < r.size(); ++i) l[i] += r[i];
-		return l;
-	}
-
-	// Linear time multiplication by a constant.
-	friend Poly<T> operator*(const T& a, Poly<T> r) {
-		for(auto& x : r) x *= a;
-		return r;
-	}
-	friend Poly<T> operator*(Poly<T> r, const T& a) { return a * r; }
-
-	// Quadratic time multiplication.
-	// TODO(ragnar): Use Karatsuba or FFT so we can check higher degree.
-	Poly operator*(const Poly& r) const {
-		if(this->empty() or r.empty()) return {};
-		Poly a(this->size() + r.size() - 1);
-		for(int i = 0; i < size(); ++i)
-			for(int j = 0; j < r.size(); ++j) a[i + j] += operator[](i) * r[j];
-		return a;
-	}
-	Poly& operator*=(const Poly& r) { return *this = *this * r; }
-
-	// Note: square means substitution into itself!
-	[[nodiscard]] Poly square() const {
-		Poly a{0}, pp{1};
-		for(const auto& x : *this) {
-			if(x != 0) a += x * pp;
-			pp *= *this;
-			if(pp.size() > size()) pp.resize(size());
-		}
-		return a;
-	}
-
-	// Check whether this polynomial is the identity under substitution: x.
-	[[nodiscard]] bool is_identity() const {
-		if(size() < 2) return false;
-		if(get(0) != 0) return false;
-		if(get(1) != 1) return false;
-		for(int i = 2; i < size(); ++i)
-			if(get(i) != 0) return false;
-		return true;
-	}
-
-	// The order under substitution of this polynomial, modulo x^1025
-	[[nodiscard]] int order() const {
-		Poly p, ps, pss, psss;
-		for(int d : {4, 8, 16, 32, 64, 128, 256, 512, 1024}) {
-			assert(d <= size());
-			p = *this;
-			p.resize(d);
-			ps   = p.square();
-			pss  = ps.square();
-			psss = pss.square();
-			if(not pss.is_identity()) return -1;
-		}
-		if(p.is_identity()) return 1;
-		if(ps.is_identity()) return 2;
-		if(pss.is_identity()) return 4;
-		if(psss.is_identity()) return 8;
-		assert(false);
-	}
-
-	// Print the polynomial.
-	friend std::ostream& operator<<(std::ostream& o, const Poly& p) {
-		bool f = true;
-		for(int i = 0; i < p.size(); ++i) {
-			if(p[i] == 0) continue;
-			auto c = p[i];
-			if(f)
-				f = false;
-			else {
-				o << " ";
-				if constexpr(std::is_integral_v<T>) {
-					if(c > 0)
-						o << "+";
-					else {
-						o << "-";
-						c = -c;
-					}
-				} else {
-					o << "+";
-				}
-				o << " ";
-			}
-			o << c;
-			if(i == 1) o << "*x";
-			if(i > 1) o << "*x^" << i;
-		}
-		return o;
-	}
-
-  private:
-	[[nodiscard]] const T& get(int i) const { return (*this)[i]; }
-	T& get(int i) { return (*this)[i]; }
-};
-
 ////////////////////////
 
-using F           = Field<2, int>;
+using F           = Field<2, char>;
 using PowerSeries = Poly<F>;
+
+constexpr int DEGREE = 1 << 16;
+// max order = 2^MAX_LOG_ORDER
+constexpr int MAX_LOG_ORDER = 3;
+
+// Operations on compositional power series.
+
+// Note: square means substitution into itself!
+[[nodiscard]] PowerSeries square_fft(const PowerSeries& p) {
+	assert(p[0] == 0);
+	assert(p[1] == 1);
+
+	PowerSeries pp{1};
+	PowerSeries ans(p.size());
+	for(const auto& ai : p) {
+		if(ai != 0) ans += ai * pp;
+		pp *= p;
+		if(pp.size() > p.size()) pp.resize(p.size());
+	}
+	return ans;
+}
+
+// Note: square means substitution into itself!
+[[nodiscard]] PowerSeries square(const PowerSeries& p) {
+	// return square_fft(p);
+	assert(p[0] == 0);
+	assert(p[1] == 1);
+
+	// p\circ p = p + a_2 p^2 + a_3 p^3 + ...
+	// When k = 2^a+b, with b < 2^a, we have p^k = p^(2^a) * p^b, and p^(2^a) = sum_i a_i x^(i*2^a)
+	std::vector<PowerSeries> powers(p.size());
+	powers[0] = PowerSeries{1};
+
+	PowerSeries ans(p.size());
+	for(unsigned i = 1; i < p.size(); ++i) {
+		int a = std::bit_floor(i);
+		int b = i - a;
+		powers[i].resize(p.size());
+		for(int j = 0; a * j < p.size(); ++j) {
+			if(p[j] == 0) continue;
+			assert(p[j] == 1);
+			for(int k = 0; k < std::min(powers[b].size(), p.size() - a * j); ++k)
+				powers[i][a * j + k] += powers[b][k];
+		}
+		if(p[i] != 0) ans += powers[i];
+	}
+	return ans;
+}
+
+// Check whether this polynomial is the identity under substitution: x.
+[[nodiscard]] bool is_identity(const PowerSeries& p) {
+	if(p.size() < 2) return false;
+	if(p[0] != 0) return false;
+	if(p[1] != 1) return false;
+	for(int i = 2; i < p.size(); ++i)
+		if(p[i] != 0) return false;
+	return true;
+}
+
+// The order under substitution of this polynomial, modulo x^1025
+[[nodiscard]] int order(const PowerSeries& P, bool fast = false) {
+	std::array<PowerSeries, MAX_LOG_ORDER + 1> powers;
+	for(int d = 4; d <= (fast ? 256 : DEGREE); d *= 2) {
+		assert(d <= P.size());
+		powers[0] = P;
+		powers[0].resize(d);
+		for(int i = 0; i < MAX_LOG_ORDER; ++i) powers[i + 1] = square(powers[i]);
+		if(not is_identity(powers.back())) return -1;
+	}
+	for(int i = 0; i <= MAX_LOG_ORDER; ++i)
+		if(is_identity(powers[i])) return 1 << i;
+	assert(false);
+}
 
 // Automaton on N vertices, where each vertex has 2 outgoing edges: 0 and 1.
 // 0 edges must go to the same value.
@@ -184,7 +108,15 @@ struct Automaton {
 	[[nodiscard]] bool check() const {
 		if(coefficient(0) != 0) return false;
 		if(coefficient(1) != 1) return false;
-		if(coefficient(2) != 1) return false;
+
+		// Make sure that x^2 or x^4 is the next non-0 coefficient.
+		bool ok = false;
+		if(coefficient(2) == 1)
+			ok = true;
+		else {
+			ok = coefficient(3) == 0 and coefficient(4) == 1;
+		}
+		if(not ok) return false;
 
 		// Check that vertices are distinct.
 		for(int i = 0; i < N; ++i)
@@ -293,15 +225,16 @@ void count() {
 				if(not automaton.check()) return;
 				++num_ok_automata;
 
-				auto p = automaton.power_series(1024);
+				auto p = automaton.power_series(DEGREE);
 				if(seen.contains(p)) return;
-				auto order = p.order();
+				auto order = ::order(p);
 				if(order <= 0) return;
 				auto [it, inserted] = seen.insert(p);
 				if(not inserted) return;
 				++count_per_order[order];
 				std::cout << "Found solution of order " << order << std::endl;
 				std::cout << automaton << std::endl;
+				p.resize(1025);
 				std::cout << "PowerSeries: " << p << std::endl << std::endl << std::endl;
 				return;
 			}
@@ -337,7 +270,8 @@ void count() {
 		          << std::endl;
 	std::cout << std::endl;
 
-	std::cout << "========================================================" << std::endl << std::endl;
+	std::cout << "========================================================" << std::endl
+	          << std::endl;
 }
 
 int main() {

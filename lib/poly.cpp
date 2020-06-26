@@ -62,9 +62,11 @@ struct Poly : public std::vector<T> {
 
 	// Print the polynomial.
 	friend std::ostream& operator<<(std::ostream& o, const Poly& p) {
-		bool f = true;
+		bool f  = true;
+		int cnt = 0;
 		for(int i = 0; i < p.size(); ++i) {
 			if(p[i] == 0) continue;
+			if(++cnt > 500) break;
 			auto c = p[i];
 			if(f)
 				f = false;
@@ -82,9 +84,9 @@ struct Poly : public std::vector<T> {
 				}
 				o << " ";
 			}
-			o << c;
-			if(i == 1) o << "*x";
-			if(i > 1) o << "*x^" << i;
+			if(c != 1) o << c << "*";
+			if(i == 1) o << "x";
+			if(i > 1) o << "x^" << i;
 		}
 		return o;
 	}

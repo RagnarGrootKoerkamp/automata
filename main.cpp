@@ -17,7 +17,7 @@ using F           = Field<2, char>;
 using PowerSeries = Poly<F>;
 
 constexpr int FAST_DEGREE = 1 << 8;
-constexpr int FULL_DEGREE = 1 << 18;
+constexpr int FULL_DEGREE = 1 << 20;
 // max order = 2^MAX_LOG_ORDER
 constexpr int MAX_LOG_ORDER = 2;
 
@@ -337,7 +337,6 @@ void count() {
 				++count_per_order[order];
 				std::cout << "Found solution of order " << order << std::endl;
 				std::cout << automaton << std::endl;
-				p.resize(1025);
 				std::cout << "PowerSeries: " << p << std::endl << std::endl << std::endl;
 				return;
 			}

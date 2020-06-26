@@ -71,6 +71,8 @@ The `0`-edge out of `0` goes to `0`, and the `1`-edge out of `0` goes to `4`.
     * Number of automata on 6 vertices of order 2: 11
     * Number of automata on 6 vertices of order 4: 1
 
+  These same results hold modulo `x^{2^20+1}` as well, see [results_6_order_4_degree_2_20_any_first_coefficient.txt](results_6_order_4_degree_2_20_any_first_coefficient.txt)
+
 
 
 

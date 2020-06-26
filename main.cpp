@@ -16,13 +16,14 @@
 using F           = Field<2, char>;
 using PowerSeries = Poly<F>;
 
-constexpr int DEGREE = 1 << 16;
+constexpr int FAST_DEGREE = 1 << 8;
+constexpr int FULL_DEGREE = 1 << 18;
 // max order = 2^MAX_LOG_ORDER
 constexpr int MAX_LOG_ORDER = 3;
 
 // Operations on compositional power series.
 
-// Note: square means substitution into itself!
+// Using n n*lg n FFT multiplications.
 [[nodiscard]] PowerSeries square_fft(const PowerSeries& p) {
 	assert(p[0] == 0);
 	assert(p[1] == 1);
@@ -37,8 +38,8 @@ constexpr int MAX_LOG_ORDER = 3;
 	return ans;
 }
 
-// Note: square means substitution into itself!
-[[nodiscard]] PowerSeries square(const PowerSeries& p) {
+// Multiply by largest 2^a <= i.
+[[nodiscard]] PowerSeries square_nlogn(const PowerSeries& p) {
 	// return square_fft(p);
 	assert(p[0] == 0);
 	assert(p[1] == 1);
@@ -64,6 +65,97 @@ constexpr int MAX_LOG_ORDER = 3;
 	return ans;
 }
 
+// Multiply by 2^b|i, or largest 2^a<=i if b=0.
+[[nodiscard]] PowerSeries square_fast_loop(const PowerSeries& p) {
+	// return square_fft(p);
+	assert(p[0] == 0);
+	assert(p[1] == 1);
+
+	// p\circ p = p + a_2 p^2 + a_3 p^3 + ...
+	// When k = 2^a+b, with b < 2^a, we have p^k = p^(2^a) * p^b, and p^(2^a) = sum_i a_i x^(i*2^a)
+	std::vector<PowerSeries> powers(p.size());
+	powers[0] = PowerSeries{1};
+
+	PowerSeries ans(p.size());
+	for(unsigned i = 1; i < p.size(); i += 2) {
+		int z = std::countr_zero(i);
+		powers[i].resize(p.size());
+		int a = std::bit_floor(i);
+		int b = i - a;
+		for(int j = 0; a * j < p.size(); ++j) {
+			if(p[j] == 0) continue;
+			assert(p[j] == 1);
+			for(int k = 0; k < std::min(powers[b].size(), p.size() - a * j); ++k)
+				powers[i][a * j + k] += powers[b][k];
+		}
+		if(p[i] != 0) ans += powers[i];
+		for(z = 2; i * z < p.size(); z *= 2) {
+			if(p[z * i] == 1) {
+				for(int j = 0; z * j < p.size(); ++j) ans[j * z] += powers[i][j];
+			}
+		}
+	}
+	return ans;
+}
+
+// Multiply by 2^b|i, or largest 2^a<=i if b=0.
+[[nodiscard]] PowerSeries square_dfs(const PowerSeries& p) {
+	// return square_fft(p);
+	assert(p[0] == 0);
+	assert(p[1] == 1);
+
+	// p\circ p = p + a_2 p^2 + a_3 p^3 + ...
+	// When k = 2^a+b, with b < 2^a, we have p^k = p^(2^a) * p^b, and p^(2^a) = sum_i a_i x^(i*2^a)
+	PowerSeries ans(p.size());
+
+	std::vector<bool> needed(p.size(), false);
+	needed[0] = true;
+	for(int i = 1; i < p.size(); ++i) {
+		if(p[i] == 0) continue;
+		unsigned j = i;
+		while(j % 2 == 0 and not needed[j]) {
+			needed[j] = true;
+			j /= 2;
+		}
+		while(not needed[j]) {
+			assert(j > 0);
+			needed[j] = true;
+			j         = j - std::bit_floor(j);
+		}
+	}
+
+	std::function<void(int, const PowerSeries&, int)> dfs;
+	std::vector<PowerSeries> cache(std::bit_width(p.size()) + 2);
+	// Compute power series for i using given power series for i - bit_floor(i).
+	dfs = [&](unsigned i, const PowerSeries& parent, int d = 0) {
+		assert(i < p.size());
+		if(not needed[i]) return;
+		PowerSeries& current = cache[d];
+		current.assign(p.size(), 0);
+		const int a = std::bit_floor(i);
+		const int b = i - a; // corresponds to parent.
+		for(int j = 0; a * j < p.size(); ++j) {
+			if(p[j] == 0) continue;
+			assert(p[j] == 1);
+			for(int k = 0; k < std::min(parent.size(), p.size() - a * j); ++k)
+				current[a * j + k] += parent[k];
+		}
+		if(p[i] != 0) ans += current;
+		for(int z = 2; i * z < p.size(); z *= 2) {
+			if(p[z * i] == 1) {
+				for(int j = 0; z * j < p.size(); ++j) ans[j * z] += current[j];
+			}
+		}
+
+		for(int aa = 2 * a; i + aa < p.size(); aa *= 2) dfs(i + aa, current, d + 1);
+	};
+
+	dfs(1, PowerSeries{1}, 0);
+
+	return ans;
+}
+[[nodiscard]] PowerSeries square(const PowerSeries& p) { return square_dfs(p); }
+
 // Check whether this polynomial is the identity under substitution: x.
 [[nodiscard]] bool is_identity(const PowerSeries& p) {
 	if(p.size() < 2) return false;
@@ -72,21 +164,6 @@ constexpr int MAX_LOG_ORDER = 3;
 	for(int i = 2; i < p.size(); ++i)
 		if(p[i] != 0) return false;
 	return true;
-}
-
-// The order under substitution of this polynomial, modulo x^1025
-[[nodiscard]] int order(const PowerSeries& P, bool fast = false) {
-	std::array<PowerSeries, MAX_LOG_ORDER + 1> powers;
-	for(int d = 4; d <= (fast ? 256 : DEGREE); d *= 2) {
-		assert(d <= P.size());
-		powers[0] = P;
-		powers[0].resize(d);
-		for(int i = 0; i < MAX_LOG_ORDER; ++i) powers[i + 1] = square(powers[i]);
-		if(not is_identity(powers.back())) return -1;
-	}
-	for(int i = 0; i <= MAX_LOG_ORDER; ++i)
-		if(is_identity(powers[i])) return 1 << i;
-	assert(false);
 }
 
 // Automaton on N vertices, where each vertex has 2 outgoing edges: 0 and 1.
@@ -193,6 +270,23 @@ struct Automaton {
 	}
 };
 
+// The order under substitution of this polynomial, modulo x^1025
+template <int N>
+[[nodiscard]] int order(const Automaton<N>& a, PowerSeries& p, int max_deg) {
+	std::array<PowerSeries, MAX_LOG_ORDER + 1> powers;
+	p.resize(2);
+	for(int d = 4; d <= max_deg; d *= 2) {
+		if(d > 4 * FAST_DEGREE) std::cerr << "Degree: " << d << std::endl;
+		while(p.size() < d) p.push_back(a.coefficient(p.size()));
+		powers[0] = p;
+		for(int i = 0; i < MAX_LOG_ORDER; ++i) powers[i + 1] = square(powers[i]);
+		if(not is_identity(powers.back())) return -1;
+	}
+	for(int i = 0; i <= MAX_LOG_ORDER; ++i)
+		if(is_identity(powers[i])) return 1 << i;
+	assert(false);
+}
+
 std::set<PowerSeries> seen;
 
 // Count the number of suitable automata.
@@ -202,6 +296,10 @@ void count() {
 	int num_ok_automata = 0;
 	std::map<int, int> count_per_order;
 
+	PowerSeries p;
+	p.reserve(FULL_DEGREE);
+	p.push_back(0);
+	p.push_back(1);
 	Automaton<N> automaton;
 
 	// Loop over the number of 1 labels.
@@ -225,12 +323,15 @@ void count() {
 				if(not automaton.check()) return;
 				++num_ok_automata;
 
-				auto p = automaton.power_series(DEGREE);
+				if(order(automaton, p, FAST_DEGREE) <= 0) return;
 				if(seen.contains(p)) return;
-				auto order = ::order(p);
+				auto order = ::order(automaton, p, FULL_DEGREE);
 				if(order <= 0) return;
-				auto [it, inserted] = seen.insert(p);
-				if(not inserted) return;
+				auto p2 = p;
+				p2.resize(FAST_DEGREE);
+				auto [it, inserted] = seen.insert(p2);
+				// The FAST_DEGREE terms should be unique already.
+				assert(inserted);
 				++count_per_order[order];
 				std::cout << "Found solution of order " << order << std::endl;
 				std::cout << automaton << std::endl;
@@ -246,7 +347,7 @@ void count() {
 			// 0-edge goes to any other vertex with the same label.
 			// For the start vertex, always use 0 or 1 to break symmetry.
 			// For the final vertex, always use N-2 or N-1 to break symmetry.
-			for(v0 = (u == N - 1 ? N - 2 : 0); v0 < (u == 0 ? 2 : N); ++v0) {
+			for(v0 = (u == N - 1 ? N - 2 : 0); v0 < (u == 0 ? 2 : N); ++v0) { // NOLINT
 				if(automaton.vertex_label[v0] != automaton.vertex_label[u]) continue;
 
 				// Loop over 1-edge to arbitrary vertex.

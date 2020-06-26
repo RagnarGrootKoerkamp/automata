@@ -1,6 +1,5 @@
 #pragma once
-#include "fft.cpp"
-
+#include <iostream>
 #include <vector>
 
 // Polynomials.
@@ -49,9 +48,6 @@ struct Poly : public std::vector<T> {
 	Poly operator*(const Poly& r) const {
 		if(this->empty() or r.empty()) return {};
 		Poly a(this->size() + r.size() - 1);
-		// For large polynomials, use FFT.
-		constexpr int S = 200;
-		if(this->size() > S and r.size() > S) return convolution(*this, r);
 
 		// For small polynomials, use quadratic multiplication.
 		for(int i = 0; i < size(); ++i)

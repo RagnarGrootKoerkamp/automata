@@ -1,4 +1,3 @@
-#include "lib/fft.cpp"
 #include "lib/field.cpp"
 #include "lib/poly.cpp"
 
@@ -13,13 +12,20 @@
 
 ////////////////////////
 
+// Must be a power of 2. The max order to consider.
+constexpr int MIN_SIZE = 1;
+constexpr int MAX_SIZE = 6;
+constexpr unsigned MAX_ORDER = 4;
+constexpr int MAX_LOG_ORDER  = std::countr_zero(MAX_ORDER);
+
+constexpr int FAST_DEGREE = 1 << 10;
+constexpr int FULL_DEGREE = 1 << 16;
+
+////////////////////////
+static_assert(std::has_single_bit(MAX_ORDER));
+
 using F           = Field<2, char>;
 using PowerSeries = Poly<F>;
-
-constexpr int FAST_DEGREE = 1 << 8;
-constexpr int FULL_DEGREE = 1 << 20;
-// max order = 2^MAX_LOG_ORDER
-constexpr int MAX_LOG_ORDER = 2;
 
 // Operations on compositional power series.
 
@@ -294,6 +300,8 @@ std::set<PowerSeries> seen;
 // Count the number of suitable automata.
 template <int N>
 void count() {
+	if(N < MIN_SIZE or N > MAX_SIZE) return;
+
 	int num_automata    = 0;
 	int num_ok_automata = 0;
 	std::map<int, int> count_per_order;
@@ -326,12 +334,13 @@ void count() {
 				++num_ok_automata;
 
 				if(order(automaton, p, FAST_DEGREE) <= 0) return;
-				if(seen.contains(p)) return;
+				// if(seen.contains(p)) return;
 				auto order = ::order(automaton, p, FULL_DEGREE);
 				if(order <= 0) return;
 				auto p2 = p;
-				p2.resize(FAST_DEGREE);
+				// p2.resize(FAST_DEGREE);
 				auto [it, inserted] = seen.insert(p2);
+				if(not inserted) return;
 				// The FAST_DEGREE terms should be unique already.
 				assert(inserted);
 				++count_per_order[order];
@@ -377,10 +386,10 @@ void count() {
 }
 
 int main() {
-	// count<1>();
-	// count<2>();
-	// count<3>();
-	// count<4>();
+	count<1>();
+	count<2>();
+	count<3>();
+	count<4>();
 	count<5>();
 	count<6>();
 }

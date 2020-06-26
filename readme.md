@@ -51,7 +51,7 @@ The `0`-edge out of `0` goes to `0`, and the `1`-edge out of `0` goes to `4`.
 
 * [results\_6\_order\_8\_degree\_2_18.txt](results_6_order_8_degree_2_18.txt): degree up to 6, order up to 8, modulo `x^{2^{18}+1}`, and `\sigma` of the form `x+x^2+O(x^3)` or `x+x^4+O(x^5)`. (Power series are only printed to order `x^{1024}`.)
 
-  It finds the following results. This shows that the order 8 power series above were false positives indeed.
+  It finds the following results. This shows that there are no order 8 power series of the form `x+x^2` or `x+x^4`.
     * Number of automata on 2 vertices of order 2: 1
     * Number of automata on 4 vertices of order 2: 1
     * Number of automata on 4 vertices of order 8: 1
@@ -59,6 +59,18 @@ The `0`-edge out of `0` goes to `0`, and the `1`-edge out of `0` goes to `4`.
     * Number of automata on 5 vertices of order 4: 1
     * Number of automata on 6 vertices of order 2: 7
     * Number of automata on 6 vertices of order 4: 1
+
+* [results_6_order_4_degree_2_18_any_first_coefficient.txt](results_6_order_4_degree_2_18_any_first_coefficient.txt): degree up to 6, order up to 4, modulo `x^{2^{18}+1}`, and `\sigma` of any. (Power series are only printed to order `x^{1024}`.)
+
+  It finds the following results. Some of these will definitely be false positives.
+    * Number of automata on 2 vertices of order 2: 1
+    * Number of automata on 4 vertices of order 1: 1
+    * Number of automata on 4 vertices of order 2: 2
+    * Number of automata on 5 vertices of order 2: 4
+    * Number of automata on 5 vertices of order 4: 1
+    * Number of automata on 6 vertices of order 2: 11
+    * Number of automata on 6 vertices of order 4: 1
+
 
 
 

@@ -19,7 +19,7 @@ using PowerSeries = Poly<F>;
 constexpr int FAST_DEGREE = 1 << 8;
 constexpr int FULL_DEGREE = 1 << 18;
 // max order = 2^MAX_LOG_ORDER
-constexpr int MAX_LOG_ORDER = 3;
+constexpr int MAX_LOG_ORDER = 2;
 
 // Operations on compositional power series.
 
@@ -187,13 +187,15 @@ struct Automaton {
 		if(coefficient(1) != 1) return false;
 
 		// Make sure that x^2 or x^4 is the next non-0 coefficient.
+		/*
 		bool ok = false;
 		if(coefficient(2) == 1)
-			ok = true;
+		    ok = true;
 		else {
-			ok = coefficient(3) == 0 and coefficient(4) == 1;
+		    ok = coefficient(3) == 0 and coefficient(4) == 1;
 		}
 		if(not ok) return false;
+		*/
 
 		// Check that vertices are distinct.
 		for(int i = 0; i < N; ++i)
@@ -276,7 +278,7 @@ template <int N>
 	std::array<PowerSeries, MAX_LOG_ORDER + 1> powers;
 	p.resize(2);
 	for(int d = 4; d <= max_deg; d *= 2) {
-		if(d > 4 * FAST_DEGREE) std::cerr << "Degree: " << d << std::endl;
+		// if(d > 8 * FAST_DEGREE) std::cerr << "Degree: " << d << std::endl;
 		while(p.size() < d) p.push_back(a.coefficient(p.size()));
 		powers[0] = p;
 		for(int i = 0; i < MAX_LOG_ORDER; ++i) powers[i + 1] = square(powers[i]);
@@ -376,10 +378,10 @@ void count() {
 }
 
 int main() {
-	count<1>();
-	count<2>();
-	count<3>();
-	count<4>();
+	// count<1>();
+	// count<2>();
+	// count<3>();
+	// count<4>();
 	count<5>();
 	count<6>();
 }

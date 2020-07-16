@@ -3,23 +3,25 @@
 
 #include <array>
 #include <bit>
+#include <bitset>
 #include <cassert>
 #include <functional>
 #include <iostream>
 #include <map>
+#include <numeric>
 #include <set>
 #include <vector>
 
 ////////////////////////
 
-// Must be a power of 2. The max order to consider.
 constexpr int MIN_SIZE = 1;
 constexpr int MAX_SIZE = 6;
+// Must be a power of 2. The max order to consider.
 constexpr unsigned MAX_ORDER = 4;
 constexpr int MAX_LOG_ORDER  = std::countr_zero(MAX_ORDER);
 
-constexpr int FAST_DEGREE = 1 << 10;
-constexpr int FULL_DEGREE = 1 << 16;
+constexpr int FAST_DEGREE = (1 << 10);
+constexpr int FULL_DEGREE = (1 << 15);
 
 ////////////////////////
 static_assert(std::has_single_bit(MAX_ORDER));
@@ -27,85 +29,13 @@ static_assert(std::has_single_bit(MAX_ORDER));
 using F           = Field<2, char>;
 using PowerSeries = Poly<F>;
 
-// Operations on compositional power series.
-
-// Using n n*lg n FFT multiplications.
-[[nodiscard]] PowerSeries square_fft(const PowerSeries& p) {
-	assert(p[0] == 0);
-	assert(p[1] == 1);
-
-	PowerSeries pp{1};
-	PowerSeries ans(p.size());
-	for(const auto& ai : p) {
-		if(ai != 0) ans += ai * pp;
-		pp *= p;
-		if(pp.size() > p.size()) pp.resize(p.size());
-	}
-	return ans;
-}
-
-// Multiply by largest 2^a <= i.
-[[nodiscard]] PowerSeries square_nlogn(const PowerSeries& p) {
-	// return square_fft(p);
-	assert(p[0] == 0);
-	assert(p[1] == 1);
-
-	// p\circ p = p + a_2 p^2 + a_3 p^3 + ...
-	// When k = 2^a+b, with b < 2^a, we have p^k = p^(2^a) * p^b, and p^(2^a) = sum_i a_i x^(i*2^a)
-	std::vector<PowerSeries> powers(p.size());
-	powers[0] = PowerSeries{1};
-
-	PowerSeries ans(p.size());
-	for(unsigned i = 1; i < p.size(); ++i) {
-		int a = std::bit_floor(i);
-		int b = i - a;
-		powers[i].resize(p.size());
-		for(int j = 0; a * j < p.size(); ++j) {
-			if(p[j] == 0) continue;
-			assert(p[j] == 1);
-			for(int k = 0; k < std::min(powers[b].size(), p.size() - a * j); ++k)
-				powers[i][a * j + k] += powers[b][k];
-		}
-		if(p[i] != 0) ans += powers[i];
-	}
-	return ans;
-}
-
+// Compute the compositional square of p.
+// In general p^(2^k) is easy to compute over F_2: we get b_(2^k*i) = a_i and all other b_i are 0.
+// We compute p^i for all odd i by looking at the maximal a with 2^a<=i and compute
+// p^i = (p^(2^a) * p^(i-2^a)).
+// All even p^(i * 2^b) are computed as (p^i)^(2^b).
 // Multiply by 2^b|i, or largest 2^a<=i if b=0.
-[[nodiscard]] PowerSeries square_fast_loop(const PowerSeries& p) {
-	// return square_fft(p);
-	assert(p[0] == 0);
-	assert(p[1] == 1);
-
-	// p\circ p = p + a_2 p^2 + a_3 p^3 + ...
-	// When k = 2^a+b, with b < 2^a, we have p^k = p^(2^a) * p^b, and p^(2^a) = sum_i a_i x^(i*2^a)
-	std::vector<PowerSeries> powers(p.size());
-	powers[0] = PowerSeries{1};
-
-	PowerSeries ans(p.size());
-	for(unsigned i = 1; i < p.size(); i += 2) {
-		int z = std::countr_zero(i);
-		powers[i].resize(p.size());
-		int a = std::bit_floor(i);
-		int b = i - a;
-		for(int j = 0; a * j < p.size(); ++j) {
-			if(p[j] == 0) continue;
-			assert(p[j] == 1);
-			for(int k = 0; k < std::min(powers[b].size(), p.size() - a * j); ++k)
-				powers[i][a * j + k] += powers[b][k];
-		}
-		if(p[i] != 0) ans += powers[i];
-		for(z = 2; i * z < p.size(); z *= 2) {
-			if(p[z * i] == 1) {
-				for(int j = 0; z * j < p.size(); ++j) ans[j * z] += powers[i][j];
-			}
-		}
-	}
-	return ans;
-}
-
-// Multiply by 2^b|i, or largest 2^a<=i if b=0.
-[[nodiscard]] PowerSeries square_dfs(const PowerSeries& p) {
+[[nodiscard]] PowerSeries square(const PowerSeries& p) {
 	// return square_fft(p);
 	assert(p[0] == 0);
 	assert(p[1] == 1);
@@ -131,6 +61,7 @@ using PowerSeries = Poly<F>;
 	}
 
 	std::function<void(int, const PowerSeries&, int)> dfs;
+	// Cache is only to reuse allocated memory.
 	std::vector<PowerSeries> cache(std::bit_width(p.size()) + 2);
 	// Compute power series for i using given power series for i - bit_floor(i).
 	dfs = [&](unsigned i, const PowerSeries& parent, int d = 0) {
@@ -160,7 +91,6 @@ using PowerSeries = Poly<F>;
 
 	return ans;
 }
-[[nodiscard]] PowerSeries square(const PowerSeries& p) { return square_dfs(p); }
 
 // Check whether this polynomial is the identity under substitution: x.
 [[nodiscard]] bool is_identity(const PowerSeries& p) {
@@ -185,7 +115,6 @@ struct Automaton {
 	// Check some conditions:
 	// - a_0 = 0
 	// - a_1 = 1
-	// - a_2 = 1
 	// - all vertices are reachable
 	// - each vertex with outgoing edges can reach the opposite label.
 	[[nodiscard]] bool check() const {
@@ -203,11 +132,6 @@ struct Automaton {
 		if(not ok) return false;
 		*/
 
-		// Check that vertices are distinct.
-		for(int i = 0; i < N; ++i)
-			for(int j = 0; j < i; ++j)
-				if(vertex_label[i] == vertex_label[j] and edges[i] == edges[j]) return false;
-
 		// Check that all vertices are reachable.
 		std::array<bool, N> done{false};
 		for(int i = 0; i < (1 << N); ++i) {
@@ -222,24 +146,6 @@ struct Automaton {
 		}
 		for(int i = 0; i < N; ++i)
 			if(not done[i]) return false;
-
-		// Check that each vertex that has outgoing edges can reach vertices of the opposite label.
-		for(int i = 0; i < N; ++i) {
-			if(edges[i][0] == i and edges[i][1] == i) continue;
-
-			std::array<bool, N> done{};
-			std::function<bool(int)> dfs;
-			dfs = [&](int u) {
-				if(done[u]) return false;
-				done[u] = true;
-				if(vertex_label[u] != vertex_label[i]) return true;
-				for(auto v : edges[u])
-					if(dfs(v)) return true;
-				return false;
-			};
-
-			if(not dfs(i)) return false;
-		}
 
 		return true;
 	}
@@ -276,6 +182,77 @@ struct Automaton {
 		}
 		return o;
 	}
+
+	// See https://en.wikipedia.org/wiki/DFA_minimization#Hopcroft's_algorithm.
+	[[nodiscard]] bool is_minimal() const {
+		constexpr auto NN  = 1 << N;
+		unsigned accepting = 0, rejecting = 0;
+		for(int i = 0; i < N; ++i)
+			if(vertex_label[i] == 1)
+				accepting |= 1 << i;
+			else
+				rejecting |= 1 << i;
+		std::vector<unsigned> P{accepting, rejecting}, W{accepting, rejecting};
+		std::bitset<NN> doneW{}, doneP{};
+		P.reserve(NN);
+		doneP[accepting] = doneP[rejecting] = true;
+		while(not W.empty()) {
+			auto A = W.back();
+			W.pop_back();
+			if(doneW[A]) continue;
+			doneW[A] = true;
+			for(auto c : {0, 1}) {
+				unsigned X = 0;
+				for(int x = 0; x < N; ++x)
+					if(A & (1 << edges[x][c])) X |= 1 << x;
+				for(auto& Y : P) {
+					const auto I = Y & X;
+					const auto J = Y & (~X);
+					if(I and J) {
+						// Replace/add to W.
+						if(auto it = find(begin(W), end(W), Y); it != W.end()) {
+							*it = I;
+							W.push_back(J);
+						} else {
+							if(std::popcount(I) <= std::popcount(J))
+								W.push_back(I);
+							else
+								W.push_back(J);
+						}
+						// Replace in P.
+						doneP[Y] = false;
+						doneP[I] = true;
+						doneP[J] = true;
+						Y        = I;
+						P.push_back(J);
+					}
+				}
+			}
+		}
+		return P.size() == N;
+	}
+
+	friend bool equivalent(const Automaton& l, const Automaton& r) {
+		if(l.vertex_label != r.vertex_label) return false;
+		int Z = 0;
+		for(auto x : l.vertex_label)
+			if(x == 0) ++Z;
+		assert(Z > 0 and Z < N);
+		// loop over permutations of [1..Z) and [Z..N-1)
+		std::vector<int> p(N);
+		std::iota(begin(p), end(p), 0);
+		do {
+			do {
+				// Check if l == r under the current permutation.
+				for(int u = 0; u < N; ++u)
+					for(auto c : {0, 1})
+						if(p[l.edges[u][c]] != r.edges[p[u]][c]) goto bad;
+				return true;
+			bad:;
+			} while(std::next_permutation(begin(p) + Z, end(p) - 1));
+		} while(std::next_permutation(begin(p) + 1, begin(p) + Z));
+		return false;
+	}
 };
 
 // The order under substitution of this polynomial, modulo x^1025
@@ -295,7 +272,75 @@ template <int N>
 	assert(false);
 }
 
-std::set<PowerSeries> seen;
+// See break_sequence.pdf for details.
+// Return true when p potentially has finite order.
+// Return false when p fails a condition and thus must have infinite order.
+template <int N>
+bool check_break_sequence(const Automaton<N>& automaton, int max_deg) {
+	// We check the break sequence modulo increasing x^DEGREE to prevent doing a lot of work on the
+	// lower terms.
+
+	// For p = x + a_k x^k + O(x^(k+1)), return k-1.
+	// Returns -1 for p = x.
+	auto depth = [](const PowerSeries& p) {
+		for(int i = 2; i < p.size(); ++i)
+			if(p[i] == 1) return i - 1;
+		return -1;
+	};
+
+	PowerSeries p{0, 1};
+	auto check_degree = [&](int degree) {
+		// b: lower break sequence
+		// B: upper break sequence
+		std::vector<int> b, B;
+
+		auto p = automaton.power_series(degree);
+
+		auto b0 = depth(p);
+		if(b0 == -1) return true;
+
+		b.push_back(b0);
+		B.push_back(b0);
+
+		// Condition (1):
+		if(not(gcd(b0, 2) == 1)) return false;
+
+		// Keep computing more terms of the break sequence, until we hit infinity.
+		for(int i = 1; true; ++i) {
+			assert(i < 15);
+			auto bprev = b.back();
+			auto Bprev = B.back();
+
+			p       = square(p);
+			auto bi = depth(p);
+
+			// We've hit the limit with the current modulus x^DEGREE, and all checks so far have
+			// passed.
+			if(bi == -1) return true;
+
+			b.push_back(bi);
+
+			// Condition (0): B_i must be integers.
+			// B_i = B_(i-1) + 2^-i * (b_i - b_(i-1))
+			if(not((bi - bprev) % (1 << i) == 0)) return false;
+
+			auto Bi = Bprev + (bi - bprev) / (1 << i);
+			B.push_back(Bi);
+
+			// Condition (2): B_i >= 2*B_(i-1)
+			if(not(Bi >= 2 * Bprev)) return false;
+
+			// Condition (3): if B_i > 2*B_(i-1), then gcd(2, B_i) = 1.
+			if(Bi > 2 * Bprev)
+				if(not(gcd(2, Bi) == 1)) return false;
+		}
+		return true;
+	};
+
+	for(int d = 4; d <= max_deg; d *= 2)
+		if(not check_degree(d)) return false;
+	return true;
+}
 
 // Count the number of suitable automata.
 template <int N>
@@ -306,11 +351,65 @@ void count() {
 	int num_ok_automata = 0;
 	std::map<int, int> count_per_order;
 
+	int num_ok_break_sequence = 0;
+
 	PowerSeries p;
 	p.reserve(FULL_DEGREE);
 	p.push_back(0);
 	p.push_back(1);
 	Automaton<N> automaton;
+
+	std::map<PowerSeries, Automaton<N>> seen;
+	std::map<PowerSeries, Automaton<N>> seen_break_sequence;
+
+	// MAIN WORK IS HERE.
+	// Check whether the current automaton works.
+	auto test_automaton = [&] {
+		++num_automata;
+
+		// Some basic checks (sigma = 0 + t + O(t^2); all states are reachable.)
+		if(not automaton.check()) return;
+		// Make sure the automaton is minimal.
+		if(not automaton.is_minimal()) return;
+		++num_ok_automata;
+
+		if(check_break_sequence(automaton, FULL_DEGREE)) {
+			auto p              = automaton.power_series(FULL_DEGREE);
+			auto [it, inserted] = seen_break_sequence.emplace(p, automaton);
+			if(not inserted) {
+				// If the power series already exists, make sure that the corresponding
+				// automaton is equivalent (i.e. the solution is unique up to isomorphisms).
+				assert(equivalent(automaton, it->second));
+			} else {
+				++num_ok_break_sequence;
+				std::cout << "Found automaton with potential finite order passing the break "
+				             "sequence check:\n"
+				          << automaton << std::endl;
+				std::cout << "PowerSeries: " << p << std::endl << std::endl << std::endl;
+			}
+		}
+
+		// Compute the order of the automaton, modulo x^FULL_DEGREE.
+		auto order = ::order(automaton, p, FULL_DEGREE);
+		// If order modulo x^FULL_DEGREE isn't finite, return 0.
+		if(order <= 0) return;
+
+		auto [it, inserted] = seen.emplace(p, automaton);
+		if(not inserted) {
+			// If the power series already exists, make sure that the corresponding
+			// automaton is equivalent (i.e. the solution is unique up to isomorphisms).
+			assert(equivalent(automaton, it->second));
+			return;
+		}
+
+		// We found a new solution!
+		++count_per_order[order];
+		std::cout << "Found solution of order " << order << std::endl;
+		std::cout << automaton << std::endl;
+		std::cout << "PowerSeries: " << p << std::endl << std::endl << std::endl;
+
+		assert(check_break_sequence(automaton, FULL_DEGREE));
+	};
 
 	// Loop over the number of 1 labels.
 	// Note: 0 has label 0, and at least one vertex has label 1, because coefficient(1) = 1.
@@ -327,26 +426,7 @@ void count() {
 		std::function<void(int)> dfs;
 		dfs = [&](int u) {
 			if(u == N) {
-				// Check whether the current automaton works.
-				++num_automata;
-
-				if(not automaton.check()) return;
-				++num_ok_automata;
-
-				if(order(automaton, p, FAST_DEGREE) <= 0) return;
-				// if(seen.contains(p)) return;
-				auto order = ::order(automaton, p, FULL_DEGREE);
-				if(order <= 0) return;
-				auto p2 = p;
-				// p2.resize(FAST_DEGREE);
-				auto [it, inserted] = seen.insert(p2);
-				if(not inserted) return;
-				// The FAST_DEGREE terms should be unique already.
-				assert(inserted);
-				++count_per_order[order];
-				std::cout << "Found solution of order " << order << std::endl;
-				std::cout << automaton << std::endl;
-				std::cout << "PowerSeries: " << p << std::endl << std::endl << std::endl;
+				test_automaton();
 				return;
 			}
 
@@ -361,7 +441,8 @@ void count() {
 				if(automaton.vertex_label[v0] != automaton.vertex_label[u]) continue;
 
 				// Loop over 1-edge to arbitrary vertex.
-				// For the start vertex, we force the edge to go to vertex N-1 to break symmetry.
+				// For the start vertex, we force the edge to go to vertex N-1 to break
+				// symmetry.
 				if(u == 0)
 					for(v1 = N - 1; v1 < N; ++v1) dfs(u + 1);
 				else
@@ -381,6 +462,10 @@ void count() {
 		          << std::endl;
 	std::cout << std::endl;
 
+	std::cout << "Number of automata passing the break sequence check: " << num_ok_break_sequence
+	          << std::endl
+	          << std::endl;
+
 	std::cout << "========================================================" << std::endl
 	          << std::endl;
 }
@@ -391,5 +476,22 @@ int main() {
 	count<3>();
 	count<4>();
 	count<5>();
-	count<6>();
+	// count<6>();
 }
+
+// todo:
+// A:
+// - loop over grootte 1..5.
+// - loop over automaten van gegeven grootte.
+// - check dat de automaat minimaal is.
+// - check sigma^4 = identiteit mod x^(2^14).
+// - check of de automaat niet equivalent is aan een eerder gevonden oplossing.
+// - check dat de powerseries van sigma t/m 2^14 coefficienten uniek is.
+//
+// B:
+// - loop over grootte 1..5.
+// - loop over automaten van gegeven grootte.
+// - check dat de automaat minimaal is.
+// - reken sigma^(2^i) uit voor i <= 13 modulo x^(2^13)
+// - als sigma^(2^13) % x^(2^13) != identity -> skip want oneindige orde
+// - anders bekijk lower/upper break sequences b_i en b^i, en check de condities.

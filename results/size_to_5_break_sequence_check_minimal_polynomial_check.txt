@@ -1,0 +1,467 @@
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+
+FOUND A POTENTIAL FINITE ORDER CANDIDATE
+N:                   4
+Vertex labels:       0 0 1 1
+Edges:               [0, 3] [1, 1] [3, 2] [2, 1]
+Sigma:               t0^196 + t0^193 + t0^160 + t0^157 + t0^154 + t0^148 + t0^145 + t0^136 + t0^133 + t0^130 + t0^128 + t0^125 + t0^122 + t0^116 + t0^113 + t0^104 + t0^101 + t0^98 + t0^80 + t0^77 + t0^74 + t0^68 + t0^65 + t0^64 + t0^61 + t0^58 + t0^52 + t0^49 + t0^40 + t0^37 + t0^34 + t0^32 + t0^29 + t0^26 + t0^20 + t0^17 + t0^16 + t0^13 + t0^10 + t0^8 + t0^5 + t0^4 + t0^2 + t0
+All factors:         [(A0, 1), (A0 + 1, 1), (t*A0 + A0 + 1, 1), (t*A0 + t + A0, 1), (t^3*A0 + A0^3 + A0^2 + A0 + 1, 1), (t^3*A0 + t^3 + A0^3, 1), (t^6*A0 + t^5*A0 + t^3*A0^3 + t^5 + t^4*A0 + t^3*A0^2 + t^2*A0^3 + t*A0^3 + t^2*A0 + t*A0^2 + A0^3, 1), (t^6*A0 + t^6 + t^5*A0 + t^3*A0^3 + t^4*A0 + t^2*A0^3 + t^4 + t^3*A0 + t^2*A0^2 + t*A0^3 + A0^3 + t*A0 + A0^2 + A0 + 1, 1)]
+Minimal polynomial:  t^3*A0 + t^3 + A0^3
+
+THIS AUTOMATON HAS INFINITE ORDER
+
+FOUND A POTENTIAL FINITE ORDER CANDIDATE
+N:                   4
+Vertex labels:       0 0 0 1
+Edges:               [1, 3] [0, 0] [0, 3] [3, 2]
+Sigma:               t0^199 + t0^198 + t0^196 + t0^195 + t0^193 + t0^191 + t0^190 + t0^188 + t0^186 + t0^185 + t0^184 + t0^181 + t0^178 + t0^176 + t0^173 + t0^171 + t0^167 + t0^166 + t0^164 + t0^161 + t0^147 + t0^143 + t0^142 + t0^140 + t0^137 + t0^131 + t0^127 + t0^126 + t0^124 + t0^122 + t0^121 + t0^120 + t0^117 + t0^114 + t0^112 + t0^109 + t0^107 + t0^106 + t0^104 + t0^103 + t0^102 + t0^101 + t0^100 + t0^98 + t0^97 + t0^96 + t0^93 + t0^91 + t0^87 + t0^86 + t0^84 + t0^81 + t0^74 + t0^72 + t0^69 + t0^66 + t0^64 + t0^61 + t0^59 + t0^55 + t0^54 + t0^52 + t0^51 + t0^49 + t0^47 + t0^46 + t0^44 + t0^41 + t0^35 + t0^31 + t0^30 + t0^28 + t0^26 + t0^25 + t0^24 + t0^21 + t0^18 + t0^16 + t0^13 + t0^11 + t0^7 + t0^6 + t0^4 + t0
+All factors:         [(A0, 1), (t*A0 + A0 + 1, 1), (t^2*A0^3 + t*A0^3 + t*A0^2 + A0 + 1, 1), (t^3*A0^3 + t*A0^3 + t + A0, 1), (t^6*A0^8 + t^2*A0^8 + t^3*A0^4 + t*A0^4 + t^2*A0^2 + A0^4 + t*A0 + A0^2 + 1, 1)]
+Minimal polynomial:  t^3*A0^3 + t*A0^3 + t + A0
+
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+
+ERROR WHILE FACTORIZING: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+N:                   5
+Vertex labels:       0 0 1 1 1
+Edges:               [0, 4] [1, 1] [4, 1] [2, 2] [3, 1]
+Sigma:               t0^160 + t0^148 + t0^132 + t0^128 + t0^80 + t0^74 + t0^66 + t0^64 + t0^40 + t0^37 + t0^33 + t0^32 + t0^20 + t0^16 + t0^10 + t0^8 + t0^5 + t0^4 + t0^2 + t0
+Generating poly:     t^20*A0^32 + t^16*A0^32 + t^22*A0^16 + t^4*A0^32 + t^18*A0^16 + A0^32 + t^26*A0^4 + t^22*A0^8 + t^14*A0^16 + t^26*A0^2 + t^20*A0^8 + t^25*A0^2 + t^25*A0 + t^22*A0^4 + t^18*A0^8 + t^10*A0^16 + t^23*A0^2 + t^23*A0 + t^22*A0^2 + t^16*A0^8 + t^18*A0^4 + t^14*A0^8 + t^18*A0^2 + t^4*A0^16 + t^17*A0^2 + t^17*A0 + t^14*A0^4 + t^10*A0^8 + t^14*A0^2 + A0^16
+
+
+ERROR WHILE FACTORIZING: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+N:                   5
+Vertex labels:       0 0 1 1 1
+Edges:               [0, 4] [1, 1] [4, 1] [2, 2] [3, 3]
+Sigma:               t0^196 + t0^192 + t0^184 + t0^183 + t0^181 + t0^179 + t0^177 + t0^168 + t0^167 + t0^165 + t0^163 + t0^161 + t0^160 + t0^156 + t0^152 + t0^151 + t0^149 + t0^148 + t0^147 + t0^145 + t0^140 + t0^136 + t0^135 + t0^133 + t0^132 + t0^131 + t0^129 + t0^128 + t0^112 + t0^110 + t0^106 + t0^102 + t0^98 + t0^96 + t0^92 + t0^84 + t0^80 + t0^78 + t0^76 + t0^74 + t0^70 + t0^68 + t0^66 + t0^64 + t0^56 + t0^55 + t0^53 + t0^51 + t0^49 + t0^48 + t0^46 + t0^42 + t0^40 + t0^39 + t0^38 + t0^37 + t0^35 + t0^34 + t0^33 + t0^32 + t0^28 + t0^24 + t0^23 + t0^21 + t0^20 + t0^19 + t0^17 + t0^16 + t0^14 + t0^12 + t0^10 + t0^8 + t0^7 + t0^6 + t0^5 + t0^4 + t0^3 + t0^2 + t0
+Generating poly:     t^22*A0^32 + t^20*A0^32 + t^18*A0^32 + t^16*A0^32 + t^6*A0^32 + t^4*A0^32 + t^2*A0^32 + A0^32 + t^22*A0^8 + t^24*A0^4 + t^20*A0^8 + t^24*A0^2 + t^22*A0^4 + t^18*A0^8 + t^23*A0^2 + t^23*A0 + t^22*A0^2 + t^16*A0^8 + t^6*A0^16 + t^16*A0^4 + t^4*A0^16 + t^16*A0^2 + t^14*A0^4 + t^2*A0^16 + t^14*A0^2 + A0^16
+
+THIS AUTOMATON HAS INFINITE ORDER
+
+FOUND A POTENTIAL FINITE ORDER CANDIDATE
+N:                   5
+Vertex labels:       0 0 1 1 1
+Edges:               [0, 4] [1, 1] [4, 2] [2, 1] [3, 1]
+Sigma:               t0^193 + t0^144 + t0^137 + t0^130 + t0^128 + t0^121 + t0^114 + t0^100 + t0^72 + t0^65 + t0^64 + t0^57 + t0^50 + t0^36 + t0^32 + t0^25 + t0^18 + t0^16 + t0^9 + t0^8 + t0^4 + t0^2 + t0
+All factors:         [(A0, 1), (A0 + 1, 1), (t*A0 + A0 + 1, 1), (t*A0 + t + A0, 1), (t^7*A0 + A0^7 + A0^6 + A0^5 + A0^4 + A0^3 + A0^2 + A0 + 1, 1), (t^7*A0 + t^7 + A0^7, 1), (t^14*A0 + t^13*A0 + t^7*A0^7 + t^13 + t^12*A0 + t^7*A0^6 + t^6*A0^7 + t^11*A0 + t^7*A0^5 + t^5*A0^7 + t^11 + t^10*A0 + t^7*A0^4 + t^6*A0^5 + t^5*A0^6 + t^4*A0^7 + t^9*A0 + t^7*A0^3 + t^3*A0^7 + t^9 + t^8*A0 + t^7*A0^2 + t^6*A0^3 + t^3*A0^6 + t^2*A0^7 + t^5*A0^3 + t^3*A0^5 + t*A0^7 + t^6*A0 + t^5*A0^2 + t^4*A0^3 + t^3*A0^4 + t^2*A0^5 + t*A0^6 + A0^7, 1), (t^14*A0 + t^14 + t^13*A0 + t^7*A0^7 + t^12*A0 + t^6*A0^7 + t^12 + t^11*A0 + t^6*A0^6 + t^5*A0^7 + t^10*A0 + t^4*A0^7 + t^10 + t^9*A0 + t^5*A0^5 + t^4*A0^6 + t^3*A0^7 + t^8*A0 + t^4*A0^5 + t^2*A0^7 + t^8 + t^7*A0 + t^4*A0^4 + t^2*A0^6 + t*A0^7 + A0^7 + t^3*A0^3 + t*A0^5 + A0^6 + t^2*A0^3 + A0^5 + t^2*A0^2 + t*A0^3 + A0^4 + A0^3 + t*A0 + A0^2 + A0 + 1, 1)]
+Minimal polynomial:  t^7*A0 + t^7 + A0^7
+
+
+FOUND A POTENTIAL FINITE ORDER CANDIDATE
+N:                   5
+Vertex labels:       0 0 1 1 1
+Edges:               [0, 4] [1, 1] [4, 2] [2, 1] [3, 3]
+Sigma:               t0^195 + t0^193 + t0^192 + t0^187 + t0^185 + t0^182 + t0^178 + t0^176 + t0^172 + t0^171 + t0^169 + t0^166 + t0^164 + t0^162 + t0^152 + t0^147 + t0^145 + t0^144 + t0^139 + t0^137 + t0^136 + t0^134 + t0^131 + t0^130 + t0^129 + t0^128 + t0^123 + t0^121 + t0^118 + t0^114 + t0^108 + t0^100 + t0^96 + t0^91 + t0^89 + t0^88 + t0^86 + t0^83 + t0^82 + t0^81 + t0^76 + t0^72 + t0^68 + t0^67 + t0^65 + t0^64 + t0^59 + t0^57 + t0^54 + t0^50 + t0^48 + t0^44 + t0^43 + t0^41 + t0^38 + t0^36 + t0^34 + t0^32 + t0^27 + t0^25 + t0^24 + t0^22 + t0^19 + t0^18 + t0^17 + t0^16 + t0^12 + t0^11 + t0^9 + t0^8 + t0^6 + t0^4 + t0^3 + t0^2 + t0
+All factors:         [(A0, 1), (A0 + 1, 1), (t*A0 + A0 + 1, 1), (t*A0 + t + A0, 1), (t^2*A0^7 + t^7*A0 + t^7 + A0^7, 1), (t^2*A0^7 + t^7*A0 + t^2*A0^6 + t^2*A0^5 + A0^7 + t^2*A0^4 + A0^6 + t^2*A0^3 + A0^5 + t^2*A0^2 + A0^4 + t^2*A0 + A0^3 + t^2 + A0^2 + A0 + 1, 1), (t^7*A0^7 + t^12*A0 + t^6*A0^7 + t^12 + t^11*A0 + t^6*A0^6 + t^5*A0^7 + t^4*A0^7 + t^5*A0^5 + t^4*A0^6 + t^3*A0^7 + t^8*A0 + t^4*A0^5 + t^2*A0^7 + t^8 + t^7*A0 + t^4*A0^4 + t^2*A0^6 + t*A0^7 + A0^7 + t^3*A0^3 + t*A0^5 + A0^6 + t^2*A0^3 + A0^5 + t^2*A0^2 + t*A0^3 + A0^4 + A0^3 + t*A0 + A0^2 + A0 + 1, 1), (t^7*A0^7 + t^12*A0 + t^7*A0^6 + t^6*A0^7 + t^11*A0 + t^7*A0^5 + t^5*A0^7 + t^11 + t^7*A0^4 + t^6*A0^5 + t^5*A0^6 + t^4*A0^7 + t^7*A0^3 + t^3*A0^7 + t^8*A0 + t^7*A0^2 + t^6*A0^3 + t^3*A0^6 + t^2*A0^7 + t^5*A0^3 + t^3*A0^5 + t*A0^7 + t^6*A0 + t^5*A0^2 + t^4*A0^3 + t^3*A0^4 + t^2*A0^5 + t*A0^6 + A0^7, 1)]
+Minimal polynomial:  t^2*A0^7 + t^7*A0 + t^7 + A0^7
+
+
+FOUND A POTENTIAL FINITE ORDER CANDIDATE
+N:                   5
+Vertex labels:       0 0 1 1 1
+Edges:               [0, 4] [1, 1] [4, 2] [2, 2] [3, 1]
+Sigma:               t0^197 + t0^194 + t0^193 + t0^160 + t0^157 + t0^154 + t0^153 + t0^148 + t0^146 + t0^144 + t0^141 + t0^138 + t0^137 + t0^132 + t0^130 + t0^128 + t0^125 + t0^122 + t0^121 + t0^116 + t0^114 + t0^104 + t0^101 + t0^100 + t0^97 + t0^80 + t0^77 + t0^74 + t0^73 + t0^72 + t0^69 + t0^66 + t0^65 + t0^64 + t0^61 + t0^58 + t0^57 + t0^52 + t0^50 + t0^40 + t0^37 + t0^36 + t0^33 + t0^32 + t0^29 + t0^26 + t0^25 + t0^20 + t0^18 + t0^16 + t0^13 + t0^10 + t0^9 + t0^8 + t0^5 + t0^4 + t0^2 + t0
+All factors:         [(A0, 1), (A0 + 1, 1), (t*A0 + A0 + 1, 1), (t*A0 + t + A0, 1), (t^2*A0^3 + t^3*A0 + t^3 + t^2*A0 + A0^3, 1), (t^2*A0^3 + t^3*A0 + t^2*A0^2 + A0^3 + A0^2 + A0 + 1, 1), (t^2*A0^4 + t^3*A0^2 + t^4 + t^3*A0 + t^2*A0^2 + A0^4, 1), (t^2*A0^4 + t^3*A0^2 + t^4 + t^3*A0 + t^2*A0^2 + A0^4 + 1, 1), (t^3*A0^3 + t^4*A0 + t^2*A0^3 + t^4 + t^2*A0^2 + t*A0^3 + t^2*A0 + A0^3 + t^2 + t*A0 + A0^2 + A0 + 1, 1), (t^3*A0^3 + t^4*A0 + t^3*A0^2 + t^2*A0^3 + t^3*A0 + t*A0^3 + t^3 + t*A0^2 + A0^3, 1), (t^4*A0^4 + t^5*A0^2 + t^6 + t^5*A0 + t^4*A0^2 + t^3*A0^2 + t^3*A0 + t^2*A0^2 + A0^4, 1), (t^4*A0^4 + t^5*A0^2 + t^6 + t^5*A0 + t^4*A0^2 + t^3*A0^2 + t^3*A0 + t^2*A0^2 + A0^4 + t^2 + 1, 1)]
+Minimal polynomial:  t^2*A0^4 + t^3*A0^2 + t^4 + t^3*A0 + t^2*A0^2 + A0^4
+
+THIS AUTOMATON HAS INFINITE ORDER
+
+ERROR WHILE FACTORIZING: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+N:                   5
+Vertex labels:       0 0 1 1 1
+Edges:               [0, 4] [1, 1] [4, 4] [2, 1] [3, 3]
+Sigma:               t0^195 + t0^193 + t0^192 + t0^182 + t0^178 + t0^176 + t0^166 + t0^162 + t0^155 + t0^153 + t0^152 + t0^150 + t0^147 + t0^146 + t0^145 + t0^144 + t0^139 + t0^137 + t0^136 + t0^134 + t0^131 + t0^130 + t0^129 + t0^128 + t0^108 + t0^100 + t0^96 + t0^91 + t0^89 + t0^88 + t0^83 + t0^81 + t0^76 + t0^75 + t0^73 + t0^72 + t0^68 + t0^67 + t0^65 + t0^64 + t0^54 + t0^50 + t0^48 + t0^44 + t0^38 + t0^36 + t0^34 + t0^32 + t0^27 + t0^25 + t0^24 + t0^22 + t0^19 + t0^18 + t0^17 + t0^16 + t0^12 + t0^11 + t0^9 + t0^8 + t0^6 + t0^4 + t0^3 + t0^2 + t0
+Generating poly:     t^26*A0^32 + t^24*A0^32 + t^18*A0^32 + t^16*A0^32 + t^26*A0^16 + t^10*A0^32 + t^24*A0^16 + t^8*A0^32 + t^22*A0^16 + t^20*A0^16 + t^18*A0^16 + t^2*A0^32 + t^16*A0^16 + A0^32 + t^22*A0^8 + t^14*A0^16 + t^20*A0^8 + t^12*A0^16 + t^10*A0^16 + t^20*A0^4 + t^8*A0^16 + t^20*A0^2 + t^18*A0^4 + t^14*A0^8 + t^19*A0^2 + t^19*A0 + t^18*A0^2 + t^16*A0^4 + t^12*A0^8 + t^16*A0^2 + t^14*A0^4 + t^2*A0^16 + t^14*A0^2 + A0^16
+
+THIS AUTOMATON HAS INFINITE ORDER
+
+FOUND A POTENTIAL FINITE ORDER CANDIDATE
+N:                   5
+Vertex labels:       0 0 1 1 1
+Edges:               [0, 4] [1, 2] [4, 2] [2, 1] [3, 1]
+Sigma:               t0^199 + t0^198 + t0^197 + t0^196 + t0^195 + t0^194 + t0^193 + t0^176 + t0^175 + t0^174 + t0^173 + t0^171 + t0^169 + t0^168 + t0^167 + t0^162 + t0^161 + t0^152 + t0^151 + t0^148 + t0^145 + t0^144 + t0^143 + t0^142 + t0^141 + t0^140 + t0^139 + t0^138 + t0^137 + t0^134 + t0^133 + t0^131 + t0^130 + t0^128 + t0^127 + t0^126 + t0^125 + t0^124 + t0^123 + t0^122 + t0^121 + t0^120 + t0^119 + t0^118 + t0^117 + t0^116 + t0^115 + t0^114 + t0^113 + t0^112 + t0^111 + t0^110 + t0^109 + t0^108 + t0^107 + t0^106 + t0^105 + t0^104 + t0^103 + t0^102 + t0^101 + t0^100 + t0^99 + t0^98 + t0^97 + t0^88 + t0^87 + t0^84 + t0^81 + t0^76 + t0^74 + t0^72 + t0^71 + t0^70 + t0^69 + t0^67 + t0^65 + t0^64 + t0^63 + t0^62 + t0^61 + t0^60 + t0^59 + t0^58 + t0^57 + t0^56 + t0^55 + t0^54 + t0^53 + t0^52 + t0^51 + t0^50 + t0^49 + t0^44 + t0^42 + t0^38 + t0^37 + t0^36 + t0^35 + t0^32 + t0^31 + t0^30 + t0^29 + t0^28 + t0^27 + t0^26 + t0^25 + t0^22 + t0^21 + t0^19 + t0^18 + t0^16 + t0^15 + t0^14 + t0^13 + t0^11 + t0^9 + t0^8 + t0^7 + t0^4 + t0^2 + t0
+All factors:         [(A0, 1), (A0 + 1, 1), (t*A0 + A0 + 1, 1), (t*A0 + t + A0, 1), (t^3*A0^4 + t^3*A0^3 + t^2*A0^4 + t*A0^4 + t^4 + t^2*A0^2 + t*A0^3 + A0^4, 1), (t^3*A0^4 + t^3*A0^3 + t^2*A0^4 + t^3*A0^2 + t*A0^4 + t^4 + t^3*A0 + t^2*A0^2 + t*A0^3 + A0^4 + t*A0^2 + t*A0 + 1, 1), (t^5*A0^4 + t^5*A0^3 + t^4*A0^4 + t^6 + t^3*A0^2 + t*A0^4 + t^4 + t^3*A0 + t*A0^3 + A0^4 + t*A0^2 + t*A0 + 1, 1), (t^5*A0^4 + t^5*A0^3 + t^4*A0^4 + t^5*A0^2 + t^6 + t^5*A0 + t^3*A0^2 + t*A0^4 + t^3*A0 + t*A0^3 + A0^4, 1), (t^7*A0^6 + t^7*A0^5 + t^6*A0^6 + t^7*A0^4 + t^5*A0^6 + t^7*A0^3 + t^5*A0^5 + t^4*A0^6 + t^3*A0^6 + t^8 + t^6*A0^2 + t^4*A0^4 + t^3*A0^5 + t^2*A0^6 + t^3*A0^4 + t*A0^6 + t^6 + t^3*A0^3 + t*A0^5 + A0^6 + t^2*A0^2 + A0^4 + t*A0^2 + t*A0 + A0^2 + 1, 1), (t^7*A0^6 + t^7*A0^5 + t^6*A0^6 + t^7*A0^4 + t^5*A0^6 + t^7*A0^3 + t^6*A0^4 + t^5*A0^5 + t^4*A0^6 + t^3*A0^6 + t^8 + t^3*A0^5 + t^2*A0^6 + t^5*A0^2 + t^3*A0^4 + t*A0^6 + t^6 + t^5*A0 + t^4*A0^2 + t^3*A0^3 + t^2*A0^4 + t*A0^5 + A0^6, 1)]
+Minimal polynomial:  t^3*A0^4 + t^3*A0^3 + t^2*A0^4 + t*A0^4 + t^4 + t^2*A0^2 + t*A0^3 + A0^4
+
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+
+FOUND A POTENTIAL FINITE ORDER CANDIDATE
+N:                   5
+Vertex labels:       0 0 0 1 1
+Edges:               [1, 4] [0, 3] [2, 2] [3, 0] [4, 2]
+Sigma:               t0^194 + t0^182 + t0^168 + t0^162 + t0^152 + t0^146 + t0^138 + t0^134 + t0^128 + t0^118 + t0^104 + t0^98 + t0^88 + t0^82 + t0^74 + t0^70 + t0^64 + t0^56 + t0^50 + t0^42 + t0^38 + t0^32 + t0^26 + t0^22 + t0^16 + t0^14 + t0^8 + t0^4 + t0^2 + t0
+All factors:         [(A0, 1), (t*A0 + A0 + 1, 1), (t^8*A0^7 + A0^7 + t^2*A0^3 + t^2 + A0, 1), (t^8*A0^8 + A0^8 + t^2*A0^4 + t^3 + t^2*A0 + t^2 + A0^2, 1), (t^11*A0^7 + t^10*A0^7 + t^10*A0^6 + t^9*A0^7 + t^8*A0^7 + t^9*A0^5 + t^8*A0^6 + t^8*A0^5 + t^8*A0^4 + t^7*A0^3 + t^3*A0^7 + t^6*A0^3 + t^2*A0^7 + t^6*A0^2 + t^2*A0^6 + t*A0^7 + A0^7 + t^5*A0 + t*A0^5 + A0^6 + t^5 + t^4*A0 + A0^5 + t*A0^3 + A0^4 + t^3 + A0^3 + t^2 + A0^2, 1), (t^12*A0^8 + t^8*A0^8 + t^4*A0^8 + t^6*A0^4 + A0^8 + t^7 + t^6*A0 + t^6 + t^4*A0^2 + t^2*A0^4 + t^5 + t^2*A0 + A0^2, 1)]
+Minimal polynomial:  t^8*A0^8 + A0^8 + t^2*A0^4 + t^3 + t^2*A0 + t^2 + A0^2
+
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+
+FOUND A POTENTIAL FINITE ORDER CANDIDATE
+N:                   5
+Vertex labels:       0 0 0 1 1
+Edges:               [1, 4] [0, 3] [2, 2] [3, 4] [4, 2]
+Sigma:               t0^160 + t0^136 + t0^130 + t0^128 + t0^96 + t0^72 + t0^66 + t0^64 + t0^40 + t0^34 + t0^32 + t0^24 + t0^18 + t0^16 + t0^10 + t0^8 + t0^6 + t0^4 + t0^2 + t0
+All factors:         [(A0, 1), (A0 + 1, 1), (A0^2 + A0 + 1, 1), (t*A0 + A0 + 1, 1), (t*A0 + t + A0, 1), (A0^4 + t^2 + A0, 1), (t^2*A0^2 + t^2*A0 + t^2 + A0^2 + t + A0 + 1, 1), (t^4*A0^4 + t^6 + t^4*A0 + A0^4 + t^3 + t + A0, 1), (t^8 + A0^8 + t^2*A0^4 + t^3 + t^2*A0 + t^2 + A0^2, 1), (t^16 + t^8*A0^8 + t^10*A0^4 + t^11 + t^10*A0 + t^10 + t^8*A0^2 + t^9 + A0^8 + t^7 + t^6 + t^2*A0^4 + t^5 + t^2*A0 + A0^2, 1)]
+Minimal polynomial:  t^8 + A0^8 + t^2*A0^4 + t^3 + t^2*A0 + t^2 + A0^2
+
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+
+FOUND A POTENTIAL FINITE ORDER CANDIDATE
+N:                   5
+Vertex labels:       0 0 0 1 1
+Edges:               [1, 4] [1, 3] [2, 2] [3, 0] [4, 2]
+Sigma:               t0^196 + t0^194 + t0^182 + t0^176 + t0^168 + t0^164 + t0^162 + t0^152 + t0^148 + t0^146 + t0^140 + t0^138 + t0^134 + t0^128 + t0^118 + t0^112 + t0^104 + t0^100 + t0^98 + t0^88 + t0^84 + t0^82 + t0^76 + t0^74 + t0^70 + t0^64 + t0^56 + t0^52 + t0^50 + t0^44 + t0^42 + t0^38 + t0^32 + t0^28 + t0^26 + t0^22 + t0^16 + t0^14 + t0^8 + t0^4 + t0^2 + t0
+All factors:         [(A0, 1), (t*A0 + A0 + 1, 1), (t^8*A0^7 + t^2*A0 + A0^3 + t^2 + A0, 1), (t^8*A0^8 + t^2*A0^2 + A0^4 + t^3 + t^2*A0 + t^2 + A0^2, 1), (t^15*A0^7 + t^14*A0^7 + t^14*A0^6 + t^13*A0^7 + t^12*A0^7 + t^13*A0^5 + t^12*A0^6 + t^11*A0^7 + t^12*A0^5 + t^10*A0^7 + t^12*A0^4 + t^10*A0^6 + t^9*A0^7 + t^8*A0^7 + t^11*A0^3 + t^9*A0^5 + t^8*A0^6 + t^10*A0^3 + t^8*A0^5 + t^10*A0^2 + t^9*A0^3 + t^8*A0^4 + t^8*A0^3 + t^8*A0^2 + t^7*A0^3 + t^9 + t^6*A0^3 + t^8 + t^6*A0^2 + t^5*A0^3 + t^7 + t^4*A0^3 + t^6 + t^5*A0 + t^4*A0^2 + t^3*A0^3 + t^5 + t^4*A0 + t^2*A0^3 + t^2*A0^2 + t*A0^3 + t^3 + A0^3 + t^2 + A0^2, 1), (t^16*A0^8 + t^8*A0^8 + t^10*A0^2 + t^8*A0^4 + t^11 + t^10*A0 + t^10 + t^8*A0^2 + t^9 + t^8 + t^7 + t^6 + t^5 + t^2*A0^2 + A0^4 + t^2*A0 + A0^2, 1)]
+Minimal polynomial:  t^8*A0^8 + t^2*A0^2 + A0^4 + t^3 + t^2*A0 + t^2 + A0^2
+
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+
+FOUND A POTENTIAL FINITE ORDER CANDIDATE
+N:                   5
+Vertex labels:       0 0 0 1 1
+Edges:               [1, 4] [2, 3] [2, 2] [3, 0] [4, 2]
+Sigma:               t0^194 + t0^182 + t0^162 + t0^118 + t0^98 + t0^82 + t0^50 + t0^42 + t0^26 + t0^22 + t0^14 + t0^2 + t0
+All factors:         [(A0, 1), (t*A0 + A0 + 1, 1), (t^8*A0^7 + t^2 + A0, 1), (t^8*A0^8 + t^3 + t^2*A0 + t^2 + A0^2, 1), (t^15*A0^7 + t^14*A0^7 + t^14*A0^6 + t^13*A0^7 + t^12*A0^7 + t^13*A0^5 + t^12*A0^6 + t^11*A0^7 + t^12*A0^5 + t^10*A0^7 + t^12*A0^4 + t^10*A0^6 + t^9*A0^7 + t^8*A0^7 + t^11*A0^3 + t^9*A0^5 + t^8*A0^6 + t^10*A0^3 + t^8*A0^5 + t^10*A0^2 + t^9*A0^3 + t^8*A0^4 + t^8*A0^3 + t^9*A0 + t^8*A0^2 + t^9 + t^8*A0 + t^7*A0 + t^7 + t^6*A0 + t^5*A0 + t^5 + t^4*A0 + t^3*A0 + t^3 + t^2*A0 + t*A0 + A0 + 1, 1), (t^16*A0^8 + t^8*A0^8 + t^11 + t^10*A0 + t^10 + t^8*A0^2 + t^9 + t^7 + t^5 + t^2*A0 + t^2 + A0^2 + 1, 1)]
+Minimal polynomial:  t^8*A0^8 + t^3 + t^2*A0 + t^2 + A0^2
+
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+
+FOUND A POTENTIAL FINITE ORDER CANDIDATE
+N:                   5
+Vertex labels:       0 0 0 1 1
+Edges:               [1, 4] [2, 3] [2, 2] [4, 4] [3, 2]
+Sigma:               t0^86 + t0^85 + t0^82 + t0^81 + t0^70 + t0^69 + t0^66 + t0^65 + t0^22 + t0^21 + t0^18 + t0^17 + t0^6 + t0^5 + t0^2 + t0
+All factors:         [(A0, 1), (t*A0 + A0 + 1, 1), (t*A0^3 + t^3 + A0^3, 1), (t^3*A0^3 + t^5 + t^2*A0^3 + t^2*A0^2 + t*A0^3 + t^3 + A0^3 + t*A0 + A0^2 + A0 + 1, 1)]
+Minimal polynomial:  t*A0^3 + t^3 + A0^3
+
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+
+FOUND A POTENTIAL FINITE ORDER CANDIDATE
+N:                   5
+Vertex labels:       0 0 0 0 1
+Edges:               [1, 4] [0, 2] [0, 0] [2, 4] [4, 3]
+Sigma:               t0^199 + t0^196 + t0^193 + t0^171 + t0^163 + t0^160 + t0^158 + t0^157 + t0^154 + t0^152 + t0^151 + t0^149 + t0^148 + t0^145 + t0^136 + t0^134 + t0^133 + t0^130 + t0^127 + t0^124 + t0^123 + t0^121 + t0^118 + t0^115 + t0^114 + t0^112 + t0^111 + t0^110 + t0^109 + t0^108 + t0^106 + t0^105 + t0^103 + t0^100 + t0^97 + t0^86 + t0^82 + t0^79 + t0^76 + t0^75 + t0^73 + t0^67 + t0^64 + t0^62 + t0^61 + t0^58 + t0^56 + t0^55 + t0^53 + t0^52 + t0^49 + t0^40 + t0^38 + t0^37 + t0^34 + t0^31 + t0^28 + t0^27 + t0^25 + t0^19 + t0^16 + t0^14 + t0^13 + t0^10 + t0^7 + t0^4 + t0
+All factors:         [(A0, 1), (t*A0 + A0 + 1, 1), (t^6*A0^7 + t^5*A0^7 + t^5*A0^6 + t^4*A0^7 + t^3*A0^7 + t^4*A0^5 + t^3*A0^6 + t^3*A0^5 + t^3*A0^4 + t^2*A0^3 + t*A0^3 + t*A0^2 + A0 + 1, 1), (t^7*A0^7 + t^3*A0^7 + t*A0^3 + t + A0, 1), (t^14*A0^16 + t^6*A0^16 + t^7*A0^8 + t^3*A0^8 + t^2*A0^8 + t*A0^4 + t^2*A0^2 + A0^4 + t*A0 + A0^2 + 1, 1)]
+Minimal polynomial:  t^7*A0^7 + t^3*A0^7 + t*A0^3 + t + A0
+
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+
+FOUND A POTENTIAL FINITE ORDER CANDIDATE
+N:                   5
+Vertex labels:       0 0 0 0 1
+Edges:               [1, 4] [0, 2] [2, 0] [3, 3] [4, 3]
+Sigma:               t0^194 + t0^152 + t0^146 + t0^134 + t0^118 + t0^104 + t0^98 + t0^74 + t0^64 + t0^56 + t0^50 + t0^38 + t0^26 + t0^16 + t0^14 + t0^4 + t0
+All factors:         [(A0, 1), (t*A0 + A0 + 1, 1), (t^8*A0^7 + A0^7 + t^2*A0^3 + t^2 + A0, 1), (t^8*A0^8 + A0^8 + t^2*A0^4 + t^3 + t^2*A0 + t^2 + A0^2, 1), (t^11*A0^7 + t^10*A0^7 + t^10*A0^6 + t^9*A0^7 + t^8*A0^7 + t^9*A0^5 + t^8*A0^6 + t^8*A0^5 + t^8*A0^4 + t^7*A0^3 + t^3*A0^7 + t^6*A0^3 + t^2*A0^7 + t^6*A0^2 + t^2*A0^6 + t*A0^7 + A0^7 + t^5*A0 + t*A0^5 + A0^6 + t^5 + t^4*A0 + A0^5 + t*A0^3 + A0^4 + t^3 + A0^3 + t^2 + A0^2, 1), (t^12*A0^8 + t^8*A0^8 + t^4*A0^8 + t^6*A0^4 + A0^8 + t^7 + t^6*A0 + t^6 + t^4*A0^2 + t^2*A0^4 + t^5 + t^2*A0 + A0^2, 1)]
+Minimal polynomial:  t^8*A0^8 + A0^8 + t^2*A0^4 + t^3 + t^2*A0 + t^2 + A0^2
+
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+
+FOUND A POTENTIAL FINITE ORDER CANDIDATE
+N:                   5
+Vertex labels:       0 0 0 0 1
+Edges:               [1, 4] [0, 2] [2, 3] [2, 4] [4, 3]
+Sigma:               t0^199 + t0^198 + t0^197 + t0^196 + t0^195 + t0^194 + t0^193 + t0^127 + t0^124 + t0^123 + t0^122 + t0^121 + t0^112 + t0^111 + t0^110 + t0^109 + t0^108 + t0^107 + t0^106 + t0^105 + t0^104 + t0^103 + t0^102 + t0^101 + t0^100 + t0^99 + t0^98 + t0^97 + t0^64 + t0^62 + t0^61 + t0^56 + t0^55 + t0^54 + t0^53 + t0^52 + t0^51 + t0^50 + t0^49 + t0^31 + t0^28 + t0^27 + t0^26 + t0^25 + t0^16 + t0^14 + t0^13 + t0^7 + t0^4 + t0
+All factors:         [(A0, 1), (A0 + 1, 1), (A0^2 + A0 + 1, 1), (t*A0 + A0 + 1, 1), (t*A0 + t + A0, 1), (t*A0^2 + t*A0 + A0^2 + t, 1), (t*A0^2 + t*A0 + A0^2 + t + 1, 1), (t^2*A0^2 + t^2*A0 + t^2 + A0^2 + t + A0 + 1, 1), (t^2*A0^4 + t^2*A0^2 + A0^4 + t*A0^2 + t*A0 + A0^2 + 1, 1), (t^2*A0^4 + t^4 + A0^4 + t^2*A0 + t*A0^2, 1), (t^2*A0^4 + t^4 + A0^4 + t^2*A0 + t*A0^2 + t + 1, 1), (t^4*A0^8 + t^8 + A0^8 + t^3*A0^4 + t^4*A0^2 + t^5 + t*A0^4 + t^4 + t^3*A0 + t^2*A0^2 + A0^4 + t^2*A0 + t*A0^2 + t^2 + t + 1, 1)]
+Minimal polynomial:  t^2*A0^4 + t^4 + A0^4 + t^2*A0 + t*A0^2
+
+
+FOUND A POTENTIAL FINITE ORDER CANDIDATE
+N:                   5
+Vertex labels:       0 0 0 0 1
+Edges:               [1, 4] [0, 2] [2, 4] [3, 3] [4, 3]
+Sigma:               t0^160 + t0^136 + t0^130 + t0^96 + t0^72 + t0^66 + t0^64 + t0^40 + t0^34 + t0^24 + t0^18 + t0^16 + t0^10 + t0^6 + t0^4 + t0
+All factors:         [(A0, 1), (A0 + 1, 1), (A0^2 + A0 + 1, 1), (t*A0 + A0 + 1, 1), (t*A0 + t + A0, 1), (A0^4 + t^2 + A0, 1), (t^2*A0^2 + t^2*A0 + t^2 + A0^2 + t + A0 + 1, 1), (t^4*A0^4 + t^6 + t^4*A0 + A0^4 + t^3 + t + A0, 1), (t^8 + A0^8 + t^2*A0^4 + t^3 + t^2*A0 + t^2 + A0^2, 1), (t^16 + t^8*A0^8 + t^10*A0^4 + t^11 + t^10*A0 + t^10 + t^8*A0^2 + t^9 + A0^8 + t^7 + t^6 + t^2*A0^4 + t^5 + t^2*A0 + A0^2, 1)]
+Minimal polynomial:  t^8 + A0^8 + t^2*A0^4 + t^3 + t^2*A0 + t^2 + A0^2
+
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+
+FOUND A POTENTIAL FINITE ORDER CANDIDATE
+N:                   5
+Vertex labels:       0 0 0 0 1
+Edges:               [1, 4] [1, 2] [2, 0] [3, 3] [4, 3]
+Sigma:               t0^196 + t0^194 + t0^118 + t0^112 + t0^104 + t0^100 + t0^98 + t0^56 + t0^52 + t0^50 + t0^28 + t0^26 + t0^14 + t0
+All factors:         [(A0, 1), (t*A0 + A0 + 1, 1), (t^8*A0^7 + t^2*A0 + A0^3 + t^2 + A0, 1), (t^8*A0^8 + t^2*A0^2 + A0^4 + t^3 + t^2*A0 + t^2 + A0^2, 1), (t^15*A0^7 + t^14*A0^7 + t^14*A0^6 + t^13*A0^7 + t^12*A0^7 + t^13*A0^5 + t^12*A0^6 + t^11*A0^7 + t^12*A0^5 + t^10*A0^7 + t^12*A0^4 + t^10*A0^6 + t^9*A0^7 + t^8*A0^7 + t^11*A0^3 + t^9*A0^5 + t^8*A0^6 + t^10*A0^3 + t^8*A0^5 + t^10*A0^2 + t^9*A0^3 + t^8*A0^4 + t^8*A0^3 + t^8*A0^2 + t^7*A0^3 + t^9 + t^6*A0^3 + t^8 + t^6*A0^2 + t^5*A0^3 + t^7 + t^4*A0^3 + t^6 + t^5*A0 + t^4*A0^2 + t^3*A0^3 + t^5 + t^4*A0 + t^2*A0^3 + t^2*A0^2 + t*A0^3 + t^3 + A0^3 + t^2 + A0^2, 1), (t^16*A0^8 + t^8*A0^8 + t^10*A0^2 + t^8*A0^4 + t^11 + t^10*A0 + t^10 + t^8*A0^2 + t^9 + t^8 + t^7 + t^6 + t^5 + t^2*A0^2 + A0^4 + t^2*A0 + A0^2, 1)]
+Minimal polynomial:  t^8*A0^8 + t^2*A0^2 + A0^4 + t^3 + t^2*A0 + t^2 + A0^2
+
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+
+FOUND A POTENTIAL FINITE ORDER CANDIDATE
+N:                   5
+Vertex labels:       0 0 0 0 1
+Edges:               [1, 4] [2, 0] [0, 1] [3, 3] [4, 3]
+Sigma:               t0^196 + t0^194 + t0^148 + t0^146 + t0^140 + t0^138 + t0^116 + t0^114 + t0^108 + t0^106 + t0^64 + t0^48 + t0^36 + t0^34 + t0^28 + t0^26 + t0^8 + t0^6 + t0
+All factors:         [(A0, 1), (t*A0 + A0 + 1, 1), (t^4*A0^3 + A0^7 + t^2*A0^3 + 1, 1), (t^8 + t^4*A0^4 + A0^8 + t^2*A0^4 + t + A0, 1), (t^11*A0^3 + t^7*A0^7 + t^10*A0^3 + t^6*A0^7 + t^10*A0^2 + t^6*A0^6 + t^5*A0^7 + t^4*A0^7 + t^9*A0 + t^5*A0^5 + t^4*A0^6 + t^3*A0^7 + t^8*A0 + t^4*A0^5 + t^2*A0^7 + t^8 + t^7*A0 + t^4*A0^4 + t^2*A0^6 + t*A0^7 + t^7 + t^6*A0 + A0^7 + t^5*A0 + t*A0^5 + A0^6 + t^5 + t^4*A0 + A0^5 + t^3*A0 + t*A0^3 + A0^4 + t^3 + t^2*A0 + A0^3 + t*A0 + A0^2 + t + A0, 1), (t^16 + t^12*A0^4 + t^8*A0^8 + t^10*A0^4 + t^9 + t^8*A0 + t^4*A0^4 + A0^8 + t^7 + t^2*A0^4 + t^5 + t^3 + A0, 1)]
+Minimal polynomial:  t^8 + t^4*A0^4 + A0^8 + t^2*A0^4 + t + A0
+
+
+FOUND A POTENTIAL FINITE ORDER CANDIDATE
+N:                   5
+Vertex labels:       0 0 0 0 1
+Edges:               [1, 4] [2, 0] [0, 2] [3, 3] [4, 3]
+Sigma:               t0^194 + t0^188 + t0^178 + t0^160 + t0^138 + t0^132 + t0^106 + t0^100 + t0^92 + t0^82 + t0^64 + t0^48 + t0^44 + t0^34 + t0^26 + t0^20 + t0^8 + t0^6 + t0
+All factors:         [(A0, 1), (t*A0 + A0 + 1, 1), (t^8*A0^7 + A0^7 + t^4*A0 + t^2*A0^3 + 1, 1), (t^8*A0^8 + A0^8 + t^6 + t^4*A0^2 + t^2*A0^4 + t + A0, 1), (t^11*A0^7 + t^10*A0^7 + t^10*A0^6 + t^9*A0^7 + t^8*A0^7 + t^9*A0^5 + t^8*A0^6 + t^8*A0^5 + t^8*A0^4 + t^7*A0^3 + t^3*A0^7 + t^6*A0^3 + t^2*A0^7 + t^7*A0 + t^6*A0^2 + t^2*A0^6 + t*A0^7 + t^6*A0 + A0^7 + t^6 + t*A0^5 + A0^6 + A0^5 + t^3*A0 + t*A0^3 + A0^4 + t^3 + t^2*A0 + A0^3 + t*A0 + A0^2 + t + A0, 1), (t^12*A0^8 + t^8*A0^8 + t^4*A0^8 + t^10 + t^8*A0^2 + t^6*A0^4 + A0^8 + t^4*A0^2 + t^2*A0^4 + t^5 + t^4*A0 + t^3 + A0, 1)]
+Minimal polynomial:  t^8*A0^8 + A0^8 + t^6 + t^4*A0^2 + t^2*A0^4 + t + A0
+
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+
+FOUND A POTENTIAL FINITE ORDER CANDIDATE
+N:                   5
+Vertex labels:       0 0 0 0 1
+Edges:               [1, 4] [2, 0] [1, 2] [3, 3] [4, 3]
+Sigma:               t0^196 + t0^108 + t0^106 + t0^104 + t0^98 + t0^96 + t0^52 + t0^26 + t0^24 + t0^6 + t0
+All factors:         [(A0, 1), (t*A0 + A0 + 1, 1), (t^8*A0^7 + t^4*A0 + t^2*A0^3 + A0^3 + 1, 1), (t^8*A0^8 + t^6 + t^4*A0^2 + t^2*A0^4 + t^4 + A0^4 + t + A0, 1), (t^15*A0^7 + t^14*A0^7 + t^14*A0^6 + t^13*A0^7 + t^12*A0^7 + t^13*A0^5 + t^12*A0^6 + t^11*A0^7 + t^12*A0^5 + t^10*A0^7 + t^12*A0^4 + t^10*A0^6 + t^9*A0^7 + t^8*A0^7 + t^11*A0^3 + t^9*A0^5 + t^8*A0^6 + t^10*A0^3 + t^8*A0^5 + t^11*A0 + t^10*A0^2 + t^8*A0^4 + t^10*A0 + t^10 + t^7 + t^6 + t^5 + t^4 + t^3*A0 + t*A0^3 + t^3 + t^2*A0 + A0^3 + t*A0 + A0^2 + t + A0, 1), (t^16*A0^8 + t^8*A0^8 + t^14 + t^12*A0^2 + t^10*A0^4 + t^12 + t^8*A0^4 + t^10 + t^9 + t^8*A0 + t^7 + t^4*A0^2 + t^2*A0^4 + t^5 + A0^4 + t^3 + A0, 1)]
+Minimal polynomial:  t^8*A0^8 + t^6 + t^4*A0^2 + t^2*A0^4 + t^4 + A0^4 + t + A0
+
+
+FOUND A POTENTIAL FINITE ORDER CANDIDATE
+N:                   5
+Vertex labels:       0 0 0 0 1
+Edges:               [1, 4] [2, 0] [1, 3] [3, 3] [4, 3]
+Sigma:               t0^106 + t0^104 + t0^98 + t0^96 + t0^26 + t0^24 + t0^6 + t0
+All factors:         [(A0, 1), (t*A0 + A0 + 1, 1), (t^2*A0^3 + A0^3 + 1, 1), (t^2*A0^4 + t^4 + A0^4 + t + A0, 1), (t^3*A0^3 + t^2*A0^3 + t^2*A0^2 + t*A0^3 + A0^3 + t*A0 + A0^2 + t + A0, 1), (t^4*A0^4 + t^6 + t^4 + A0^4 + t^3 + t^2*A0 + A0, 1)]
+Minimal polynomial:  t^2*A0^4 + t^4 + A0^4 + t + A0
+
+
+FOUND A POTENTIAL FINITE ORDER CANDIDATE
+N:                   5
+Vertex labels:       0 0 0 0 1
+Edges:               [1, 4] [2, 0] [2, 1] [3, 3] [4, 3]
+Sigma:               t0^116 + t0^114 + t0^112 + t0^108 + t0^106 + t0^56 + t0^28 + t0^26 + t0^6 + t0
+All factors:         [(A0, 1), (t*A0 + A0 + 1, 1), (t^4*A0^7 + t^4*A0^3 + t^2*A0^3 + A0 + 1, 1), (t^4*A0^8 + t^8 + t^4*A0^4 + t^2*A0^4 + t^2 + A0^2 + t + A0, 1), (t^11*A0^7 + t^10*A0^7 + t^10*A0^6 + t^9*A0^7 + t^8*A0^7 + t^11*A0^3 + t^9*A0^5 + t^8*A0^6 + t^7*A0^7 + t^10*A0^3 + t^8*A0^5 + t^6*A0^7 + t^10*A0^2 + t^8*A0^4 + t^6*A0^6 + t^5*A0^7 + t^4*A0^7 + t^9*A0 + t^7*A0^3 + t^5*A0^5 + t^4*A0^6 + t^8*A0 + t^6*A0^3 + t^4*A0^5 + t^8 + t^6*A0^2 + t^5*A0^3 + t^4*A0^4 + t^7 + t^4*A0^3 + t^6 + t^5*A0 + t^4*A0^2 + t^3*A0^3 + t^5 + t^4*A0 + t^2*A0^3 + t^2*A0^2 + t^3 + t^2 + t*A0 + t + A0, 1), (t^12*A0^8 + t^16 + t^12*A0^4 + t^10*A0^4 + t^4*A0^8 + t^10 + t^8*A0^2 + t^9 + t^8*A0 + t^4*A0^4 + t^7 + t^6 + t^2*A0^4 + t^5 + t^3 + A0^2 + A0, 1)]
+Minimal polynomial:  t^4*A0^8 + t^8 + t^4*A0^4 + t^2*A0^4 + t^2 + A0^2 + t + A0
+
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+
+FOUND A POTENTIAL FINITE ORDER CANDIDATE
+N:                   5
+Vertex labels:       0 0 0 0 1
+Edges:               [1, 4] [2, 0] [3, 4] [3, 3] [4, 3]
+Sigma:               t0^106 + t0^74 + t0^26 + t0^18 + t0^6 + t0^4 + t0
+All factors:         [(A0, 1), (t*A0 + A0 + 1, 1), (t^2*A0^3 + 1, 1), (t^2*A0^4 + t^4 + t + A0, 1), (t^5*A0^3 + t^4*A0^3 + t^4*A0^2 + t^3*A0^3 + t^2*A0^3 + t^3*A0 + t^2*A0^2 + t^3 + t^2*A0 + t + 1, 1), (t^6*A0^4 + t^8 + t^2*A0^4 + t^5 + t^4*A0 + t^4 + t^3 + A0 + 1, 1)]
+Minimal polynomial:  t^2*A0^4 + t^4 + t + A0
+
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+
+FOUND A POTENTIAL FINITE ORDER CANDIDATE
+N:                   5
+Vertex labels:       0 0 0 0 1
+Edges:               [1, 4] [2, 1] [0, 1] [3, 3] [4, 3]
+Sigma:               t0^158 + t0^156 + t0^154 + t0^150 + t0^148 + t0^144 + t0^130 + t0^78 + t0^76 + t0^74 + t0^64 + t0^38 + t0^36 + t0^18 + t0^8 + t0
+All factors:         [(A0, 1), (t*A0 + A0 + 1, 1), (t^2*A0 + A0^3 + A0 + 1, 1), (t^2*A0^2 + A0^4 + A0^2 + A0 + 1, 1), (t^5*A0 + t^3*A0^3 + t^4*A0 + t^2*A0^3 + t^4 + t^2*A0^2 + t*A0^3 + t^3 + A0^3 + t^2 + A0^2 + t + 1, 1), (t^6*A0^2 + t^4*A0^4 + t^4*A0^2 + t^4*A0 + t^2*A0^2 + A0^4 + t^3 + t^2 + A0^2 + t + A0, 1), (t^8 + t^4*A0^4 + A0^8 + t^4 + t^2*A0^2 + t + A0, 1), (t^16 + t^12*A0^4 + t^8*A0^8 + t^12 + t^10*A0^2 + t^9 + t^8*A0 + t^8 + t^4*A0^4 + A0^8 + t^7 + t^5 + t^2*A0^2 + t^3 + A0, 1)]
+Minimal polynomial:  t^8 + t^4*A0^4 + A0^8 + t^4 + t^2*A0^2 + t + A0
+
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+
+FOUND A POTENTIAL FINITE ORDER CANDIDATE
+N:                   5
+Vertex labels:       0 0 0 0 1
+Edges:               [1, 4] [2, 1] [2, 0] [3, 3] [4, 3]
+Sigma:               t0^198 + t0^196 + t0^194 + t0^192 + t0^110 + t0^102 + t0^100 + t0^98 + t0^96 + t0^54 + t0^50 + t0^48 + t0^26 + t0^24 + t0^12 + t0
+All factors:         [(A0, 1), (t*A0 + A0 + 1, 1), (t^4*A0^7 + t^4*A0^3 + t^2*A0 + A0 + 1, 1), (t^4*A0^8 + t^8 + t^4*A0^4 + t^4 + t^2*A0^2 + t^2 + A0^2 + t + A0, 1), (t^11*A0^7 + t^10*A0^7 + t^10*A0^6 + t^9*A0^7 + t^8*A0^7 + t^11*A0^3 + t^9*A0^5 + t^8*A0^6 + t^7*A0^7 + t^10*A0^3 + t^8*A0^5 + t^6*A0^7 + t^10*A0^2 + t^9*A0^3 + t^8*A0^4 + t^6*A0^6 + t^5*A0^7 + t^8*A0^3 + t^4*A0^7 + t^8*A0^2 + t^5*A0^5 + t^4*A0^6 + t^4*A0^5 + t^4*A0^4 + t^7 + t^6 + t^5 + t^4 + t^3 + t^2 + t*A0 + t + A0, 1), (t^12*A0^8 + t^16 + t^12*A0^4 + t^12 + t^10*A0^2 + t^4*A0^8 + t^10 + t^8*A0^2 + t^9 + t^8*A0 + t^8 + t^4*A0^4 + t^7 + t^6 + t^5 + t^2*A0^2 + t^3 + A0^2 + A0, 1)]
+Minimal polynomial:  t^4*A0^8 + t^8 + t^4*A0^4 + t^4 + t^2*A0^2 + t^2 + A0^2 + t + A0
+
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+
+FOUND A POTENTIAL FINITE ORDER CANDIDATE
+N:                   5
+Vertex labels:       0 0 0 0 1
+Edges:               [1, 4] [2, 2] [2, 0] [3, 3] [4, 3]
+Sigma:               t0^198 + t0^196 + t0^194 + t0^192 + t0^118 + t0^116 + t0^102 + t0^100 + t0^98 + t0^96 + t0^50 + t0^48 + t0^26 + t0^24 + t0^14 + t0^12 + t0
+All factors:         [(A0, 1), (t*A0 + A0 + 1, 1), (t^8*A0^7 + t^4*A0^7 + t^2 + A0 + 1, 1), (t^8*A0^8 + t^4*A0^8 + t^3 + t^2*A0 + t^2 + A0^2 + t + A0, 1), (t^11*A0^7 + t^10*A0^7 + t^10*A0^6 + t^9*A0^7 + t^8*A0^7 + t^9*A0^5 + t^8*A0^6 + t^7*A0^7 + t^8*A0^5 + t^6*A0^7 + t^8*A0^4 + t^6*A0^6 + t^5*A0^7 + t^4*A0^7 + t^7*A0^3 + t^5*A0^5 + t^4*A0^6 + t^6*A0^3 + t^4*A0^5 + t^6*A0^2 + t^5*A0^3 + t^4*A0^4 + t^4*A0^3 + t^5*A0 + t^4*A0^2 + t^5 + t^4*A0 + t^3*A0 + t^2*A0 + t^2 + t*A0 + t + A0, 1), (t^12*A0^8 + t^4*A0^8 + t^7 + t^6*A0 + t^6 + t^4*A0^2 + t^4*A0 + t^3 + t^2*A0 + A0^2 + A0, 1)]
+Minimal polynomial:  t^8*A0^8 + t^4*A0^8 + t^3 + t^2*A0 + t^2 + A0^2 + t + A0
+
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+
+FOUND A POTENTIAL FINITE ORDER CANDIDATE
+N:                   5
+Vertex labels:       0 0 0 0 1
+Edges:               [1, 4] [2, 3] [2, 2] [3, 0] [4, 2]
+Sigma:               t0^194 + t0^118 + t0^98 + t0^50 + t0^26 + t0^14 + t0
+All factors:         [(A0, 1), (t*A0 + A0 + 1, 1), (t^8*A0^7 + t^2 + A0, 1), (t^8*A0^8 + t^3 + t^2*A0 + t^2 + A0^2, 1), (t^15*A0^7 + t^14*A0^7 + t^14*A0^6 + t^13*A0^7 + t^12*A0^7 + t^13*A0^5 + t^12*A0^6 + t^11*A0^7 + t^12*A0^5 + t^10*A0^7 + t^12*A0^4 + t^10*A0^6 + t^9*A0^7 + t^8*A0^7 + t^11*A0^3 + t^9*A0^5 + t^8*A0^6 + t^10*A0^3 + t^8*A0^5 + t^10*A0^2 + t^9*A0^3 + t^8*A0^4 + t^8*A0^3 + t^9*A0 + t^8*A0^2 + t^9 + t^8*A0 + t^7*A0 + t^7 + t^6*A0 + t^5*A0 + t^5 + t^4*A0 + t^3*A0 + t^3 + t^2*A0 + t*A0 + A0 + 1, 1), (t^16*A0^8 + t^8*A0^8 + t^11 + t^10*A0 + t^10 + t^8*A0^2 + t^9 + t^7 + t^5 + t^2*A0 + t^2 + A0^2 + 1, 1)]
+Minimal polynomial:  t^8*A0^8 + t^3 + t^2*A0 + t^2 + A0^2
+
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+
+ERROR WHILE FACTORIZING: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+N:                   5
+Vertex labels:       0 0 0 0 1
+Edges:               [1, 4] [2, 4] [0, 0] [3, 3] [4, 3]
+Sigma:               t0^164 + t0^160 + t0^132 + t0^128 + t0^100 + t0^96 + t0^68 + t0^64 + t0^20 + t0^16 + t0^12 + t0^8 + t0^2 + t0
+Generating poly:     t^24*A0^32 + t^16*A0^32 + t^8*A0^32 + t^20*A0^16 + t^18*A0^16 + t^17*A0^16 + A0^32 + t^13*A0^16 + t^12*A0^16 + t^9*A0^16 + t^15*A0^8 + t^14*A0^8 + t^5*A0^16 + t^10*A0^8 + t^2*A0^16 + t^9*A0^8 + t^7*A0^8 + t^12*A0^2 + t^5*A0^8 + t^11*A0 + t^10*A0^2 + t^8*A0^4 + t^10*A0 + t^9*A0^2 + t^7*A0 + t^5*A0^2 + t^5*A0 + t^2*A0^2 + A0^4
+
+
+FOUND A POTENTIAL FINITE ORDER CANDIDATE
+N:                   5
+Vertex labels:       0 0 0 0 1
+Edges:               [1, 4] [2, 4] [0, 1] [3, 3] [4, 3]
+Sigma:               t0^148 + t0^128 + t0^96 + t0^68 + t0^64 + t0^52 + t0^36 + t0^16 + t0^12 + t0^8 + t0^2 + t0
+All factors:         [(A0, 1), (t*A0 + A0 + 1, 1), (t^4*A0^3 + A0^7 + 1, 1), (t^8 + t^4*A0^4 + A0^8 + t^2 + t + A0, 1), (t^11*A0^3 + t^7*A0^7 + t^10*A0^3 + t^6*A0^7 + t^10*A0^2 + t^9*A0^3 + t^6*A0^6 + t^5*A0^7 + t^8*A0^3 + t^4*A0^7 + t^9*A0 + t^8*A0^2 + t^7*A0^3 + t^5*A0^5 + t^4*A0^6 + t^3*A0^7 + t^8*A0 + t^6*A0^3 + t^4*A0^5 + t^2*A0^7 + t^8 + t^6*A0^2 + t^5*A0^3 + t^4*A0^4 + t^2*A0^6 + t*A0^7 + t^7 + t^4*A0^3 + A0^7 + t^6 + t^5*A0 + t^4*A0^2 + t^3*A0^3 + t*A0^5 + A0^6 + t^5 + t^4*A0 + t^2*A0^3 + A0^5 + t^2*A0^2 + t*A0^3 + A0^4 + t^3 + A0^3 + t^2 + t*A0 + A0^2 + t + A0, 1), (t^16 + t^12*A0^4 + t^8*A0^8 + t^10 + t^9 + t^8*A0 + t^4*A0^4 + A0^8 + t^7 + t^6 + t^5 + t^3 + A0, 1)]
+Minimal polynomial:  t^8 + t^4*A0^4 + A0^8 + t^2 + t + A0
+
+
+FOUND A POTENTIAL FINITE ORDER CANDIDATE
+N:                   5
+Vertex labels:       0 0 0 0 1
+Edges:               [1, 4] [2, 4] [0, 2] [3, 3] [4, 3]
+Sigma:               t0^188 + t0^160 + t0^156 + t0^132 + t0^128 + t0^92 + t0^76 + t0^64 + t0^44 + t0^36 + t0^20 + t0^16 + t0^8 + t0^2 + t0
+All factors:         [(A0, 1), (t*A0 + A0 + 1, 1), (A0^7 + t^4*A0 + 1, 1), (t^8 + A0^8 + t^6 + t^4*A0^2 + t^2 + t + A0, 1), (t^7*A0^7 + t^6*A0^7 + t^11*A0 + t^6*A0^6 + t^5*A0^7 + t^10*A0 + t^4*A0^7 + t^10 + t^9*A0 + t^5*A0^5 + t^4*A0^6 + t^3*A0^7 + t^8*A0 + t^4*A0^5 + t^2*A0^7 + t^8 + t^7*A0 + t^4*A0^4 + t^2*A0^6 + t*A0^7 + t^7 + t^6*A0 + A0^7 + t^5*A0 + t^3*A0^3 + t*A0^5 + A0^6 + t^5 + t^4*A0 + t^2*A0^3 + A0^5 + t^2*A0^2 + t*A0^3 + A0^4 + t^3 + A0^3 + t^2 + t*A0 + A0^2 + t + A0, 1), (t^16 + t^8*A0^8 + t^14 + t^12*A0^2 + t^9 + t^8*A0 + A0^8 + t^7 + t^6 + t^4*A0^2 + t^5 + t^3 + A0, 1)]
+Minimal polynomial:  t^8 + A0^8 + t^6 + t^4*A0^2 + t^2 + t + A0
+
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+
+FOUND A POTENTIAL FINITE ORDER CANDIDATE
+N:                   5
+Vertex labels:       0 0 0 0 1
+Edges:               [1, 4] [2, 4] [1, 3] [3, 3] [4, 3]
+Sigma:               t0^128 + t0^32 + t0^8 + t0^2 + t0
+All factors:         [(A0, 1), (A0 + 1, 1), (A0^2 + A0 + 1, 1), (t*A0 + A0 + 1, 1), (t*A0 + t + A0, 1), (t^2*A0^2 + t^2*A0 + t^2 + A0^2 + t + A0 + 1, 1), (t^4 + A0^4 + t^2 + t + A0, 1), (t^8 + t^4*A0^4 + t^6 + t^5 + t^4*A0 + t^4 + A0^4 + t^3 + A0, 1)]
+Minimal polynomial:  t^4 + A0^4 + t^2 + t + A0
+
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER
+THIS AUTOMATON HAS INFINITE ORDER

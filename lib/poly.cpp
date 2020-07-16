@@ -62,7 +62,7 @@ struct Poly : public std::vector<T> {
 		int cnt = 0;
 		for(int i = 0; i < p.size(); ++i) {
 			if(p[i] == 0) continue;
-			if(++cnt > 500) break;
+			if(++cnt > 100) break;
 			auto c = p[i];
 			if(f)
 				f = false;

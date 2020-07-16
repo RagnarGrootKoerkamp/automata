@@ -14,7 +14,13 @@ The search over automata works as follows:
 - Vertices 0 to `z-1` get label `0`, vertices `z` to `n-1` get label `1`.
 - Iterate over all possible combinations of `0`- and `1`-edges out of all vertices, where `0` edges must go to other vertices of the same label.
 - To break symmetry, the `0`-edge out of vertex `0` must go to either vertex `0` or vertex `1`, and the `0`-edge out of `n-1` must go to either `n-2` or `n-1`.
-- For each automaton, compute the power series `\sigma` up to degree `1024`. Then compute `\sigma^8 \mod x^{1025}`. If `\sigma^8 = x`, we check whether `\sigma^1 = x`, `\sigma^2=x`, and `\sigma^4=x` to determine the order.
+- Skip automata with unreachable states, and those with `\sigma` not of the form `t + O(t^2)`.
+- Check whether the automaton is minimal. If not, skip it.
+- For each automaton we check two things:
+    - Compute the power series `\sigma` up to degree `2^k`. Then compute `\sigma^8 \mod x^{2^k+1}`. If `\sigma^8 = x`, we check whether `\sigma^1 = x`, `\sigma^2=x`, and `\sigma^4=x` to determine the order.
+    - Compute the break sequence of `\sigma` (see [break_sequence.pdf](break_sequence.pdf)). If all conditions pass, the automaton/power series is a candidate to have finite order.
+
+  If either of these 2 checks passes, we store the power series and automaton, and check that this automaton is isomorphic to any previous solutions for the same power series.
 
 ## Output format
 
@@ -34,6 +40,14 @@ This automaton has 5 vertices, where vertices `0` and `1` have label `0` and ver
 The `0`-edge out of `0` goes to `0`, and the `1`-edge out of `0` goes to `4`.
 
 ## Output data
+
+* [results/size_to_5_break_sequence_check.txt](results/size_to_5_break_sequence_check.txt): Degree up to 5, order up to 3, modulo `x^{2^{15}+1}`.
+
+  This includes the minimality check and hence we confirm that all non-equivalent automata with finite order have distinct power series.
+
+  This also includes all candidates that pass the break sequence check.
+
+Below are results using older versions of the code.
 
 * [results/6.txt](results_6.txt): degree up to 6, order up to 8, modulo `x^{2^{10}+1}=x^{1025}`, and only of the form `x+x^2 + O(x^3)`.
 * [results/6\_order\_8\_degree\_65536.txt](results/6_order_8_degree_65536.txt): degree up to 6, order up to 8, modulo `x^{2^{16}+1}=x^{65537}`, and `\sigma` of the form `x+x^2+O(x^3)` or `x+x^4+O(x^5)`. (Power series are only printed to order `x^{1024}`.)

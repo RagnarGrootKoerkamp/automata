@@ -5,22 +5,35 @@
 import fileinput
 
 def read_automata():
+    passing_break_check = []
     for line in fileinput.input():
-        #print(line)
+        prefix_1 = 'Found solution'
+        prefix_2 = 'Computed '
+        if not (line.startswith(prefix_1) or line.startswith(prefix_2)): continue
+        solution = line.startswith(prefix_1)
+        line = input()
         prefix = 'Vertex labels: '
-        if line.startswith(prefix):
-            line = line[len(prefix):]
-            labels = list(map(int, line.split()))
-            assert input() == 'Edges:'
-            n = len(labels)
-            edges = [list(map(int, input().split())) for _ in range(n)]
-            assert input() == ''
-            sigma = input()
-            sigma_prefix = 'sigma^1: '
-            assert sigma.startswith(sigma_prefix)
-            sigma = sigma[len(sigma_prefix):].replace('x', 't')
+        assert line.startswith(prefix)
+        line = line[len(prefix):]
+        labels = list(map(int, line.split()))
+        assert input() == 'Edges:'
+        n = len(labels)
+        edges = [list(map(int, input().split())) for _ in range(n)]
+        assert input() == ''
+        sigma = input()
+        sigma_prefix = 'sigma^1: '
+        assert sigma.startswith(sigma_prefix)
+        sigma = sigma[len(sigma_prefix):].replace('x', 't')
 
-            yield (n, labels, edges, sigma)
+
+        val = (n, labels, edges, sigma)
+
+        if solution:
+            assert val in passing_break_check
+            passing_break_check.remove(val)
+        else:
+            passing_break_check.append(val)
+    return passing_break_check
 
 def check_automaton(a):
     n, l, edges, s = automaton
@@ -55,8 +68,14 @@ def check_automaton(a):
     try:
         factors = list(gen.factor())
     except:
-        print('ERROR WHILE FACTORIZING: XXXXXXXXXXXXXXXXXXXXXXXXXXXXX')
-        print(gen)
+        print()
+        print('ERROR WHILE FACTORIZING: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')
+        print('N:                  ', n)
+        print('Vertex labels:      ', *l)
+        print('Edges:              ', *edges)
+        print('Sigma:              ', R2.quotient(t^200, names='t')(s))
+        print('Generating poly:    ', gen)
+        print(flush=True)
         return
     #print(factors)
 
@@ -71,13 +90,14 @@ def check_automaton(a):
         if f.subs(A0 = s) != 0: continue
         print()
         print('FOUND A POTENTIAL FINITE ORDER CANDIDATE')
-        print('FACTOR', f)
-        print(f.subs(A0=s))
+        print('N:                  ', n)
+        print('Vertex labels:      ', *l)
+        print('Edges:              ', *edges)
+        print('Sigma:              ', R2.quotient(t^200, names='t')(s))
+        print('All factors:        ', factors)
+        print('Minimal polynomial: ', f)
+        print(flush=True)
         found = True
-        print(n, l, edges)
-        print(s)
-        print(factors)
-        print()
         break
     if not found:
         print('THIS AUTOMATON HAS INFINITE ORDER')

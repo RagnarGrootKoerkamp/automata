@@ -364,6 +364,14 @@ void count() {
 	std::map<PowerSeries, Automaton<N>> seen;
 	std::map<PowerSeries, Automaton<N>> seen_break_sequence;
 
+	auto print_powerseries = [](PowerSeries p) {
+		std::cout << "sigma^" << 1 << ": " << p << std::endl;
+		for(int i = 1; i <= 4; ++i) {
+			p = square(p);
+			std::cout << "sigma^" << (1 << i) << ": " << p << std::endl;
+		}
+	};
+
 	// MAIN WORK IS HERE.
 	// Check whether the current automaton works.
 	auto test_automaton = [&] {
@@ -388,7 +396,8 @@ void count() {
 				             "sequence check.\n"
 				          << "Computed " << terms << " terms\n"
 				          << automaton << std::endl;
-				std::cout << "PowerSeries: " << p << std::endl << std::endl << std::endl;
+				print_powerseries(p);
+				std::cout << std::endl << std::endl;
 			}
 		}
 
@@ -409,7 +418,8 @@ void count() {
 		++count_per_order[order];
 		std::cout << "Found solution of order " << order << std::endl;
 		std::cout << automaton << std::endl;
-		std::cout << "PowerSeries: " << p << std::endl << std::endl << std::endl;
+		print_powerseries(p);
+		std::cout << std::endl << std::endl;
 
 		assert(check_break_sequence(automaton, FULL_DEGREE).first);
 	};

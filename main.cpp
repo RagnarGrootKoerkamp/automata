@@ -262,7 +262,7 @@ template <int N>
 	p.resize(2);
 	for(int d = 4; d <= max_deg; d *= 2) {
 		// if(d > 8 * FAST_DEGREE) std::cerr << "Degree: " << d << std::endl;
-		while(p.size() < d) p.push_back(a.coefficient(p.size()));
+		while(p.size() <= d) p.push_back(a.coefficient(p.size()));
 		powers[0] = p;
 		for(int i = 0; i < MAX_LOG_ORDER; ++i) powers[i + 1] = square(powers[i]);
 		if(not is_identity(powers.back())) return -1;

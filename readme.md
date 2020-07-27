@@ -20,7 +20,7 @@ The search over automata works as follows:
 - To break symmetry, the `0`-edge out of vertex `0` must go to either vertex `0` or vertex `1`, and the `0`-edge out of `n-1` must go to either `n-2` or `n-1`.
 - Skip automata with unreachable states, and those for which the corresponding power series `\sigma` is not of the form `t + O(t^2)`.
 - Check whether the automaton is minimal. If not, skip it.
-- For each automaton compute the corresponding power series `\sigma` up to degree `2^k` (further specify this number). Then compute `\sigma^{o 2}(t) \mod t^{2^k+1}` and `\sigma^{o 4}(t) \mod t^{2^k+1}` to determine if it is a candidate for an order 2 or 4 series. If at least one of these series equals `t`, we store the automaton and its power series, and check if this automaton is isomorphic to any previous encountered automaton with the same power series.
+- For each automaton compute the corresponding power series `\sigma` up to degree `2^k` (further specify this number). Then compute `\sigma^{o2}(t) \mod t^{2^k+1}` and `\sigma^{o4}(t) \mod t^{2^k+1}` to determine if it is a candidate for an order 2 or 4 series. If at least one of these series equals `t`, we store the automaton and its power series, and check if this automaton is isomorphic to any previous encountered automaton with the same power series.
 - Using Sage, we check if the power series corresponding to the automaton indeed has order 2 or 4.
 
 ## Output format

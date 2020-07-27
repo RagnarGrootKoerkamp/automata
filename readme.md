@@ -1,4 +1,4 @@
-This program find 2-automata on at most 6 vertices satisfying the following conditions:
+This program find 2-automata on at most 5 vertices satisfying the following conditions:
 
 - Leading zeros invariant, e.g. outgoing `0` edges point to vertices of the same label.
 - Minimal: there exists no smaller automaton with the same power series.

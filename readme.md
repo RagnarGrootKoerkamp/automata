@@ -1,4 +1,4 @@
-This program is used in the paper *Automata and Finite Order Elements in the Nottingham Group*, by Jakub Byszewski, Gunther Cornelissen, and Djurre Tijsma, (Provide link to the paper), for finding all 2-automata on at most 5 vertices generating a power series `\sigma = x + O(x^2)` of compositional order 2 or 4. In the paper one can find the definitions, examples and background for all what we use here.
+This program is used in the paper **Automata and Finite Order Elements in the Nottingham Group**, by *Jakub Byszewski*, *Gunther Cornelissen*, and *Djurre Tijsma*, (Provide link to the paper), for finding all 2-automata on at most 5 vertices generating a power series `\sigma = x + O(x^2)` of compositional order 2 or 4.
 
 Specifically, this program find 2-automata on at most 5 vertices satisfying the following conditions:
 

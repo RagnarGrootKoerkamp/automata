@@ -14,13 +14,10 @@
 
 ////////////////////////
 
-constexpr int MIN_SIZE = 1;
-constexpr int MAX_SIZE = 6;
 // Must be a power of 2. The max order to consider.
 constexpr unsigned MAX_ORDER = 4;
 constexpr int MAX_LOG_ORDER  = std::countr_zero(MAX_ORDER);
 
-constexpr int FAST_DEGREE = (1 << 10);
 constexpr int FULL_DEGREE = (1 << 14);
 
 ////////////////////////
@@ -70,7 +67,6 @@ using PowerSeries = Poly<F>;
 		PowerSeries& current = cache[d];
 		current.assign(p.size(), 0);
 		const int a = std::bit_floor(i);
-		const int b = i - a; // corresponds to parent.
 		for(int j = 0; a * j < p.size(); ++j) {
 			if(p[j] == 0) continue;
 			assert(p[j] == 1);
@@ -261,7 +257,6 @@ template <int N>
 	std::array<PowerSeries, MAX_LOG_ORDER + 1> powers;
 	p.resize(2);
 	for(int d = 4; d <= max_deg; d *= 2) {
-		// if(d > 8 * FAST_DEGREE) std::cerr << "Degree: " << d << std::endl;
 		while(p.size() <= d) p.push_back(a.coefficient(p.size()));
 		powers[0] = p;
 		for(int i = 0; i < MAX_LOG_ORDER; ++i) powers[i + 1] = square(powers[i]);
@@ -275,8 +270,6 @@ template <int N>
 // Count the number of suitable automata.
 template <int N>
 void count() {
-	if(N < MIN_SIZE or N > MAX_SIZE) return;
-
 	int num_automata    = 0;
 	int num_ok_automata = 0;
 	std::map<int, int> count_per_order;
@@ -310,7 +303,7 @@ void count() {
 
 		// Compute the order of the automaton, modulo x^FULL_DEGREE.
 		auto order = ::order(automaton, p, FULL_DEGREE);
-		// If order modulo x^FULL_DEGREE isn't finite, return 0.
+		// If order modulo x^FULL_DEGREE isn't finite, return.
 		if(order <= 0) return;
 
 		auto [it, inserted] = seen.emplace(p, automaton);
@@ -323,7 +316,7 @@ void count() {
 
 		// We found a new solution!
 		++count_per_order[order];
-		std::cout << "Found solution of order " << order << std::endl;
+		std::cout << "Candidate automaton of order " << order << std::endl;
 		std::cout << automaton << std::endl;
 		print_powerseries(p);
 		std::cout << std::endl << std::endl;
@@ -371,10 +364,9 @@ void count() {
 		dfs(0);
 	}
 
-	std::cout << "Number of automata on " << N
-	          << " vertices:                        " << num_automata << std::endl;
-	std::cout << "Number of automata on " << N
-	          << " vertices post check:             " << num_ok_automata << std::endl;
+	// std::cout << "Number of automata on " << N << " vertices:                        " <<
+	// num_automata << std::endl; std::cout << "Number of automata on " << N << " vertices post
+	// check:             " << num_ok_automata << std::endl;
 	for(auto [order, cnt] : count_per_order)
 		std::cout << "Number of automata on " << N << " vertices of order " << order << ": " << cnt
 		          << std::endl;

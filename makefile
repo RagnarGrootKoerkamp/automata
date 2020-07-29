@@ -6,5 +6,5 @@ main: main.cpp
 results.txt: main
 	./main | tee results.txt
 
-verify: results.txt verify_finite_order.sage
+verify: verify_finite_order.sage
 	sage verify_finite_order.sage < results.txt

@@ -272,78 +272,6 @@ template <int N>
 	assert(false);
 }
 
-// See break_sequence.pdf for details.
-// Return true when p potentially has finite order.
-// Return false when p fails a condition and thus must have infinite order.
-// Also returns the number of terms computed.
-template <int N>
-std::pair<bool, int> check_break_sequence(const Automaton<N>& automaton, int max_deg) {
-	// We check the break sequence modulo increasing x^DEGREE to prevent doing a lot of work on the
-	// lower terms.
-
-	// For p = x + a_k x^k + O(x^(k+1)), return k-1.
-	// Returns -1 for p = x.
-	auto depth = [](const PowerSeries& p) {
-		for(int i = 2; i < p.size(); ++i)
-			if(p[i] == 1) return i - 1;
-		return -1;
-	};
-
-	PowerSeries p{0, 1};
-	auto check_degree = [&](int degree) -> std::pair<bool, int> {
-		// b: lower break sequence
-		// B: upper break sequence
-		std::vector<int> b, B;
-
-		auto p = automaton.power_series(degree);
-
-		auto b0 = depth(p);
-		if(b0 == -1) return {true, 0};
-
-		b.push_back(b0);
-		B.push_back(b0);
-
-		// Condition (1):
-		if(not(gcd(b0, 2) == 1)) return {false, 1};
-
-		// Keep computing more terms of the break sequence, until we hit infinity.
-		for(int i = 1; true; ++i) {
-			assert(i < 15);
-			auto bprev = b.back();
-			auto Bprev = B.back();
-
-			p       = square(p);
-			auto bi = depth(p);
-
-			// We've hit the limit with the current modulus x^DEGREE, and all checks so far have
-			// passed.
-			if(bi == -1) return {true, i - 1};
-
-			b.push_back(bi);
-
-			// Condition (0): B_i must be integers.
-			// B_i = B_(i-1) + 2^-i * (b_i - b_(i-1))
-			if(not((bi - bprev) % (1 << i) == 0)) return {false, i};
-
-			auto Bi = Bprev + (bi - bprev) / (1 << i);
-			B.push_back(Bi);
-
-			// Condition (2): B_i >= 2*B_(i-1)
-			if(not(Bi >= 2 * Bprev)) return {false, i};
-
-			// Condition (3): if B_i > 2*B_(i-1), then gcd(2, B_i) = 1.
-			if(Bi > 2 * Bprev)
-				if(not(gcd(2, Bi) == 1)) return {false, i};
-		}
-		assert(false);
-	};
-
-	std::pair<bool, int> r;
-	for(int d = 4; d <= max_deg; d *= 2)
-		if(r = check_degree(d); not r.first) return r;
-	return r;
-}
-
 // Count the number of suitable automata.
 template <int N>
 void count() {
@@ -353,8 +281,6 @@ void count() {
 	int num_ok_automata = 0;
 	std::map<int, int> count_per_order;
 
-	int num_ok_break_sequence = 0;
-
 	PowerSeries p;
 	p.reserve(FULL_DEGREE);
 	p.push_back(0);
@@ -362,7 +288,6 @@ void count() {
 	Automaton<N> automaton;
 
 	std::map<PowerSeries, Automaton<N>> seen;
-	std::map<PowerSeries, Automaton<N>> seen_break_sequence;
 
 	auto print_powerseries = [](PowerSeries p) {
 		std::cout << "sigma^" << 1 << ": " << p << std::endl;
@@ -383,24 +308,6 @@ void count() {
 		if(not automaton.is_minimal()) return;
 		++num_ok_automata;
 
-		if(auto [ok, terms] = check_break_sequence(automaton, FULL_DEGREE); ok) {
-			auto p              = automaton.power_series(FULL_DEGREE);
-			auto [it, inserted] = seen_break_sequence.emplace(p, automaton);
-			if(not inserted) {
-				// If the power series already exists, make sure that the corresponding
-				// automaton is equivalent (i.e. the solution is unique up to isomorphisms).
-				assert(equivalent(automaton, it->second));
-			} else {
-				++num_ok_break_sequence;
-				std::cout << "Found automaton with potential finite order passing the break "
-				             "sequence check.\n"
-				          << "Computed " << terms << " terms\n"
-				          << automaton << std::endl;
-				print_powerseries(p);
-				std::cout << std::endl << std::endl;
-			}
-		}
-
 		// Compute the order of the automaton, modulo x^FULL_DEGREE.
 		auto order = ::order(automaton, p, FULL_DEGREE);
 		// If order modulo x^FULL_DEGREE isn't finite, return 0.
@@ -420,8 +327,6 @@ void count() {
 		std::cout << automaton << std::endl;
 		print_powerseries(p);
 		std::cout << std::endl << std::endl;
-
-		assert(check_break_sequence(automaton, FULL_DEGREE).first);
 	};
 
 	// Loop over the number of 1 labels.
@@ -474,37 +379,13 @@ void count() {
 		std::cout << "Number of automata on " << N << " vertices of order " << order << ": " << cnt
 		          << std::endl;
 	std::cout << std::endl;
-
-	std::cout << "Number of automata passing the break sequence check: " << num_ok_break_sequence
-	          << std::endl
-	          << std::endl;
-
 	std::cout << "========================================================" << std::endl
 	          << std::endl;
 }
 
 int main() {
-	count<1>();
 	count<2>();
 	count<3>();
 	count<4>();
 	count<5>();
-	// count<6>();
 }
-
-// todo:
-// A:
-// - loop over grootte 1..5.
-// - loop over automaten van gegeven grootte.
-// - check dat de automaat minimaal is.
-// - check sigma^4 = identiteit mod x^(2^14).
-// - check of de automaat niet equivalent is aan een eerder gevonden oplossing.
-// - check dat de powerseries van sigma t/m 2^14 coefficienten uniek is.
-//
-// B:
-// - loop over grootte 1..5.
-// - loop over automaten van gegeven grootte.
-// - check dat de automaat minimaal is.
-// - reken sigma^(2^i) uit voor i <= 13 modulo x^(2^13)
-// - als sigma^(2^13) % x^(2^13) != identity -> skip want oneindige orde
-// - anders bekijk lower/upper break sequences b_i en b^i, en check de condities.

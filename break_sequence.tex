@@ -1,0 +1,53 @@
+\documentclass[11pt,reqno]{amsart}
+
+\usepackage{fullpage}
+\pagestyle{plain}
+
+\usepackage[scaled=0.85]{helvet} 
+
+\usepackage{amsfonts}
+
+\usepackage{amssymb}
+
+\usepackage{stmaryrd}
+
+\DeclareMathOperator{\F}{\mathbf{F}}
+
+\DeclareMathOperator{\ord}{\mathrm{ord}}
+\newcommand{\acts}{\,\rotatebox[origin=c]{-90}{$\circlearrowright$}\,}
+\newcommand{\fl}{\llbracket}
+\newcommand{\fr}{\rrbracket}
+
+\newcommand{\lau}[1]{(\!(#1)\!)} 
+\newcommand{\pau}[1]{\fl #1 \fr}
+
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+
+
+\begin{document}
+
+
+\textbf{Definition.} The depth of $\sigma=\sigma(t)\in t+t\F_2\pau{t}$ is defined by $d(\sigma)=\text{ord}_t(\sigma(t)-t)-1$ (and $d(t)=\infty$), so if $\sigma(t)=t+a_k t^k+O(t^{k+1})$ with $a_k\neq 0$, then $d(\sigma)=k-1$. The lower break sequence of $\sigma$ with finite order $2^n$ is defined as the sequence $(b_i)_{i=0}^{n-1}$, where $b_i=d(\sigma^{\circ p^i})$.\\
+
+The lower break sequence $(b_i)_{i=0}^{n-1}$ corresponds bijectively to the upper break sequence $\langle b^{(i)}\rangle_{i=0}^{n-1}$ which is defined as follows (the brackets "$\langle,\rangle$" are there to distinguish both sequences):
+\begin{equation}
+b^{(0)}=b_0\quad\text{and}\quad b^{(i)}=b^{(i-1)}+2^{-i}(b_i-b_{i-1})\quad\text{for } i>0.
+\end{equation}
+
+For an element $\sigma$ of finite order $2^n$ the elements of the upper break sequence are all integers. Furthermore, the numbers $b^{(i)}$ must also satisfy all of the following 3 conditions:
+\begin{itemize}
+\item[(1)] $\gcd(2,b^{(0)})=1$;
+\item[(2)] For each $i>0$, $b^{(i)}\ge 2b^{(i-1)}$;
+\item[(3)] If the above inequality is strict, i.e. $b^{(i)}> 2b^{(i-1)}$, then $\gcd(2,b^{(i)})=1$.
+\end{itemize}
+
+Starting with $\sigma\in t+t\F_2\pau{t}$, one can calculate the depths $b_0,\ldots,b_k$ of $\sigma,\ldots,\sigma^{\circ 2^k}$. If the corresponding upper break sequence has non-integral elements or if one of the three conditions is not satisfied, then $\sigma$ does not have finite order.\\
+
+\textbf{Example.} There is no finite order series $\sigma$ satisfying $\sigma=t+t^2+O(t^3)$ and $\sigma^{\circ 2}=t+t^8+O(t^9)$. The first two terms of its lower break sequence are $(1,7)$ which corresponds to the upper break sequence $\langle 1,4\rangle$. This latter sequence violates the third condition.\\
+
+The conditions that $\gcd(2,b^{(0)})=1$ is equivalent to $\sigma$ being of the form $t+t^{2m}+O(t^{2m+1})$ for some integer $m\ge 1$, here $b^{(0)}=2m-1$.\\
+
+For $i>0$ we have $b_i\equiv b_{i-1}\mod 2^i$. This is equivalent to the upper break sequence consisting solely out of integers.
+
+
+\end{document}

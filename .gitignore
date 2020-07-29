@@ -1,2 +1,3 @@
 check_minimal_polynomial.sage.py
 main
+verify_finite_order.sage.py

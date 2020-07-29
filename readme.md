@@ -44,10 +44,17 @@ The `0`-edge out of `0` goes to `0`, and the `1`-edge out of `0` goes to `4`. Th
 
 ## Output data
 
-* (Need new file here): All 2-automata on at most 5 vertices whose corresponding power series have compositional order 2 or 4. 
+* [results.txt](results.txt) contains all 2-automata on at most 5 vertices whose corresponding power series have compositional order 2 or 4.
 
-  This includes the minimality check and the check that all automata are non-isomorphic.
+## Build and Run
 
+Run `make all` to build the program and regenerate `results.txt`. See the [makefile](makefile) for details.
+
+Note that a recent standard library with (partial) C++20 support is required for e.g. [countr_zero](https://en.cppreference.com/w/cpp/numeric/countr_zero).
+
+Run `make verify` to verify all automata listed in `results.txt` using additional checks in [verify_finite_order.sage](verify_finite_order.sage). This should finish without errors. This checks that:
+
+- TODO(Djurre): List what exactly is checked, and verify that the checks work as expected.
 
 ## Some open questions
 

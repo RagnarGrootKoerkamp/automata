@@ -267,6 +267,8 @@ template <int N>
 	assert(false);
 }
 
+int automaton_count = 0;
+
 // Count the number of suitable automata.
 template <int N>
 void count() {
@@ -316,7 +318,9 @@ void count() {
 
 		// We found a new solution!
 		++count_per_order[order];
-		std::cout << "Candidate automaton of order " << order << std::endl;
+		std::cout << "Candidate automaton" << std::endl;
+		std::cout << "Number " << ++automaton_count << std::endl;
+		std::cout << "Order " << order << std::endl;
 		std::cout << automaton << std::endl;
 		print_powerseries(p);
 		std::cout << std::endl << std::endl;

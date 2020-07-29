@@ -28,10 +28,7 @@ template <typename T>
 std::pair<T, T> crt(T a1, T m1, T a2, T m2) {
 	T s, t, d;
 	extended_euclid(m1, m2, s, t, d);
-	if(a1 % d != a2 % d) {
-		// cerr << "Modulus " << d << "  with remainders " << a1 << " and " << a2 << endl;
-		return {-1, 0};
-	}
+	if(a1 % d != a2 % d) { return {-1, 0}; }
 	auto r = mod(s * a2 % m2 * m1 + t * a1 % m1 * m2, m1 * m2) / d;
 	auto m = m1 / d * m2;
 	return {r, m};

@@ -62,7 +62,10 @@ struct Poly : public std::vector<T> {
 		int cnt = 0;
 		for(int i = 0; i < p.size(); ++i) {
 			if(p[i] == 0) continue;
-			if(++cnt > 100) break;
+			if(++cnt == 101) {
+				o << " + O(x^" << i << ")";
+				return o;
+			}
 			auto c = p[i];
 			if(f)
 				f = false;
@@ -84,6 +87,7 @@ struct Poly : public std::vector<T> {
 			if(i == 1) o << "x";
 			if(i > 1) o << "x^" << i;
 		}
+		o << " + O(x^" << p.size() << ")";
 		return o;
 	}
 

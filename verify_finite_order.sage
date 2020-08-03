@@ -45,7 +45,10 @@ def read_automata():
 def verify_finite_order(a):
     n = a.n
 
-    if a.order == 1: return True
+    # Handle order 1 separately.
+    if a.order == 1:
+        print(f'Automaton #{a.number} passes the checks!')
+        return True
     assert a.order in [2,4]
 
     # 1. Determine the polynomial in t for the current automaton.
@@ -76,6 +79,7 @@ def verify_finite_order(a):
     gen = J.gens()[0]
     # Factorize the polynomial.
     factors = list(gen.factor())
+    #print(factors)
 
     # If the order of sigma is finite, it can only be a root of factors with deg(t) = deg(s).
     found = False
@@ -83,6 +87,11 @@ def verify_finite_order(a):
         deg_t = F.degree(t)
         deg_s = F.degree(A[0])
         if deg_t != deg_s: continue
+
+        # Check that sigma is a root of this factor.
+        Fs = F.subs(s = a.sigma)
+        #print('Substitute s in F:', F, Fs, sep='\n')
+        if Fs != 0: continue
 
         # 2. We found the minimal polynomial F(t, sigma) = 0.
         #    We also have F(sigma, sigma(sigma)) = 0 after substituting t=sigma(t).
@@ -103,18 +112,21 @@ def verify_finite_order(a):
             L = K.elimination_ideal([s] + list(A[1:]))
         else:
             # ss = sigma^4
-            R3 = PolynomialRing(GF(2), n+3, names+['s2', 'ss'])
+            R3 = PolynomialRing(GF(2), n+4, names+['s2', 's3', 'ss'])
             s = R3.gens()[1]
-            s2 = R3.gens()[-2]
+            s2 = R3.gens()[-3]
+            s3 = R3.gens()[-2]
             s4 = R3.gens()[-1]
             ss = s4
             # Equation for sigma^2.
             F2 = F.subs(s = s2, t=A[0])
+            # Equation for sigma^3.
+            F3 = F.subs(s = s3, t=s2)
             # Equation for sigma^4.
-            F4 = F.subs(s = s4, t=s2)
-            K = R3.ideal(F, F2, F4)
+            F4 = F.subs(s = s4, t=s3)
+            K = R3.ideal(F, F2, F3, F4)
             # Eliminate sigma and sigma^2 to keep t and sigma^4.
-            L = K.elimination_ideal([s, s2] + list(A[1:]))
+            L = K.elimination_ideal([s, s2, s3] + list(A[1:]))
         assert len(L.gens()) == 1
         G = L.gens()[0]
 
@@ -122,12 +134,12 @@ def verify_finite_order(a):
         Gtt = G.subs(ss= t)
         if Gtt != 0:
             # G(t, t) must be 0.
+            #print('FAILED G(t,t)=0 check!')
             continue
 
         #print('order', a.order)
         #print('F', F)
 
-        #print(L)
         #print('G',G)
         #print('Gens', R3.gens())
 

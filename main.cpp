@@ -18,7 +18,7 @@
 constexpr unsigned MAX_ORDER = 4;
 constexpr int MAX_LOG_ORDER  = std::countr_zero(MAX_ORDER);
 
-constexpr int FULL_DEGREE = (1 << 14);
+constexpr int FULL_DEGREE = (1 << 12);
 
 ////////////////////////
 static_assert(std::has_single_bit(MAX_ORDER));

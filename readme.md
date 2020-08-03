@@ -20,7 +20,7 @@ The search over automata works as follows:
 - To break symmetry, the `0`-edge out of vertex `0` must go to either vertex `0` or vertex `1`, and the `0`-edge out of `n-1` must go to either `n-2` or `n-1`.
 - Skip automata with unreachable states, and those for which the corresponding power series `\sigma` is not of the form `t + O(t^2)`.
 - Check whether the automaton is minimal. If not, skip it.
-- For each automaton compute the corresponding power series `\sigma` up to degree `2^k` (further specify this number). Then compute `\sigma(\sigma(t)) \mod t^{2^k+1}` and `\tau(\tau(t)) \mod t^{2^k+1}`, where `\tau=\sigma(\sigma(t))`, to determine if it is a candidate for an order 2 or 4 series. If at least one of these series equals `t`, we store the automaton and its power series, and check if this automaton is isomorphic to any previous encountered automaton with the same power series.
+- For each automaton compute the corresponding power series `\sigma` up to degree `2^k` (we have taken `k = 12`, since for `k < 12` one finds false positives). Then compute `\sigma(\sigma(t)) \mod t^{2^k+1}` and `\tau(\tau(t)) \mod t^{2^k+1}`, where `\tau=\sigma(\sigma(t))`, to determine if it is a candidate for an order 2 or 4 series. If at least one of these series equals `t`, we store the automaton and its power series, and check if this automaton is isomorphic to any previous encountered automaton with the same power series.
 - Using Sage, we check if the power series corresponding to the automaton indeed has order 2 or 4.
 
 
@@ -52,9 +52,9 @@ Run `make all` to build the program and regenerate `results.txt`. See the [makef
 
 Note that a recent standard library with (partial) C++20 support is required for e.g. [countr_zero](https://en.cppreference.com/w/cpp/numeric/countr_zero).
 
-Run `make verify` to verify all automata listed in `results.txt` using additional checks in [verify_finite_order.sage](verify_finite_order.sage). This should finish without errors. This checks that:
+Run `make verify` to verify all automata listed in `results.txt` using additional checks in [verify_finite_order.sage](verify_finite_order.sage). This should finish without errors, note however that this can take up to 30 minutes (resulting from a time consuming computation of an elimination ideal in Sage). This checks that:
 
-- TODO(Djurre): List what exactly is checked, and verify that the checks work as expected.
+- All the automata listed in `results.txt` indeed have compositional order 2 or 4. This is done by first calculating from the automaton an algebraic equation satisfied by the power series `\sigma`. Using an elimination ideal computation in Sage one then computes an algebraic equation for respectively `\sigma(\sigma(t))` or `\tau(\tau(t))` with `\tau=\sigma(\sigma(t))`. Using this equation we can check whether respectively `\sigma(\sigma(t))=t` or `\tau(\tau(t))=t` holds.
 
 ## Some open questions
 

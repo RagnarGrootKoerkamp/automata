@@ -59,5 +59,5 @@ Run `make verify` to verify all automata listed in `results.txt` using additiona
 ## Some open questions
 
 * To which degree `d` do we need to check that `\sigma(\sigma(t)) \equiv t \mod t^d` to be sure equality holds as well, same question for the four fold composition of `\sigma`.
-* Given an automaton `A` generating `\sigma(t)` can we find a combinatorial way to compute the automaton for `\sigma(\sigma(t))` using only the combinatorial description of `A` (one can compute the automaton for `\sigma(\sigma(t))` using algebra)?
+* Given an automaton `A` generating `\sigma(t)` can we find a combinatorial way to compute the automaton for `\sigma(\sigma(t))` using only the combinatorial description of `A` (note, it is possible to compute the automaton for `\sigma(\sigma(t))` using algebra)?
 * More general, is there an automaton to automaton mapping that gives for `\sigma(t)` the automaton corresponding to `\sigma(\sigma(t))`?

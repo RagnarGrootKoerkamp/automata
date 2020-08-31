@@ -1,4 +1,4 @@
-This code was written by *Ragnar Groot Koerkamp* and accompanies the paper **Automata and Finite Order Elements in the Nottingham Group**, by *Jakub Byszewski*, *Gunther Cornelissen*, and *Djurre Tijsma*, (TODO: provide link to the paper), for finding all 2-automata on at most 5 vertices generating a power series `\sigma(t) = t + O(t^2)` of compositional order 2 or 4.
+This code was written by *Ragnar Groot Koerkamp* and accompanies the paper **Automata and Finite Order Elements in the Nottingham Group**, by *Jakub Byszewski*, *Gunther Cornelissen*, and *Djurre Tijsma* ([arXiv](https://arxiv.org/abs/2008.04971)), for finding all 2-automata on at most 5 vertices generating a power series `\sigma(t) = t + O(t^2)` of compositional order 2 or 4.
 
 Specifically, this program find 2-automata on at most 5 vertices satisfying the following conditions:
 
